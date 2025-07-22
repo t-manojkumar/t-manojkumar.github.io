@@ -20,6 +20,22 @@ body {
     line-height: 1.6;
 }
 
+.main-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+        rgba(29, 78, 216, 0.15),
+        transparent 80%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
 .main-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -146,15 +162,17 @@ body {
     display: block;
     padding: 1.5rem;
     margin-bottom: 1rem;
+    border: 1px solid transparent; /* Add this */
     border-radius: 0.25rem;
     text-decoration: none;
     color: var(--text-secondary);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Update this */
 }
 
 .experience-card:hover, .project-card:hover {
     background-color: var(--card-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border-color: #334155; /* Add this border color on hover */
 }
 
 .experience-card .card-header {
