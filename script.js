@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Scroll Animations ---
+    // --- Header Reveal on Scroll ---
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { // Add scrolled class after 100px
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScrollY = window.scrollY;
+    });
+
+
+    // --- Scroll Animations for Content Sections ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -16,31 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // --- Experience Tabs ---
-    const tabList = document.querySelector('.tab-list');
-    const tabItems = document.querySelectorAll('.tab-item');
-    const contentItems = document.querySelectorAll('.content-item');
-
-    if (tabList) {
-        tabList.addEventListener('click', (e) => {
-            const clickedTab = e.target.closest('.tab-item');
-            if (!clickedTab) return;
-
-            // Remove active class from all tabs and content
-            tabItems.forEach(tab => tab.classList.remove('active'));
-            contentItems.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked tab
-            clickedTab.classList.add('active');
-
-            // Show corresponding content
-            const contentId = clickedTab.dataset.tab;
-            const correspondingContent = document.getElementById(contentId);
-            if (correspondingContent) {
-                correspondingContent.classList.add('active');
-            }
-        });
-    }
 
     // --- Smooth scrolling for nav links ---
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {

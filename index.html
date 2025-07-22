@@ -44,13 +44,12 @@
 
         <main>
             <section class="hero">
-                <p class="intro">Hi, my name is</p>
-                <h1 class="name">Manoj Kumar.</h1>
-                <h2 class="tagline">I build efficient systems and solutions.</h2>
-                <p class="description">
+                <p class="intro animated-fade">Hi, my name is</p>
+                <h1 class="name animated-fade">Manoj Kumar.</h1>
+                <h2 class="tagline animated-fade">I build efficient systems and solutions.</h2>
+                <p class="description animated-fade">
                     I'm a tech enthusiast with a dual background in Information Technology and Mechatronics, specializing in data management, process automation, and IoT solutions. I thrive on solving complex problems and turning data into actionable insights.
                 </p>
-                <a href="#projects" class="cta-button">Check out my projects!</a>
             </section>
 
             <section id="about" class="content-section">
@@ -71,7 +70,7 @@
                     </div>
                     <div class="about-image">
                         <div class="image-wrapper">
-                             <img src="profile.jpg" alt="Manoj Kumar">
+                            <img src="profile.jpg" alt="Manoj Kumar">
                         </div>
                     </div>
                 </div>
@@ -79,23 +78,19 @@
 
             <section id="experience" class="content-section">
                 <h2 class="section-heading"><span>02.</span> Where I’ve Worked</h2>
-                <div class="experience-tabs">
-                    <div class="tab-list">
-                        <button class="tab-item active" data-tab="flextronics">Flextronics</button>
-                    </div>
-                    <div class="tab-content">
-                        <div class="content-item active" id="flextronics">
-                            <h3>Technician-GBS Engineer <span class="company">@ <a href="#">Flextronics</a></span></h3>
-                            <p class="date">Oct 2020 – Feb 2022</p>
-                            <ul>
+                <ul class="experience-list">
+                    <li class="experience-item">
+                        <div class="experience-content">
+                            <h3 class="experience-title">Technician-GBS Engineer <span class="company">@ Flextronics</span></h3>
+                            <p class="experience-date">Oct 2020 – Feb 2022</p>
+                            <ul class="experience-details">
                                 <li>Managed product lifecycle data for over 1 million parts using Oracle Agile PLM and Baan ERP, improving data integrity by 40%.</li>
-                                <li>Automated Engineering Change Orders (ECOs) and Requests for Alternate (RFAs), cutting processing time by 20% and minimizing errors.</li>
+                                <li>Automated Engineering Change Orders (ECOs) and Requests for Alternate (RFAs), cutting processing time by 20%.</li>
                                 <li>Developed and maintained structured Bills of Materials (BOMs) for NPI, achieving 99% accuracy in component tracking.</li>
-                                <li>Led BOM optimization initiatives that enhanced data accuracy by 30% and reduced manufacturing duplicates.</li>
                             </ul>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    </ul>
             </section>
 
             <section id="projects" class="content-section">
@@ -103,10 +98,10 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="card-header">
-                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                         </div>
                         <div class="card-body">
-                            <h3 class="project-title">IPFS for IoT Communication</h3>
+                            <h3 class="project-title"><a href="#">IPFS for IoT Communication</a></h3>
                             <p class="project-description">A distributed system using IPFS and Python to automate data transactions, featuring statistical analysis for latency and error detection.</p>
                         </div>
                         <div class="card-footer">
@@ -118,9 +113,11 @@
                         </div>
                     </div>
                     <div class="project-card">
-                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
+                         <div class="card-header">
+                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
                         <div class="card-body">
-                            <h3 class="project-title">Image Pixelation Tool</h3>
+                            <h3 class="project-title"><a href="#">Image Pixelation Tool</a></h3>
                             <p class="project-description">A Python GUI tool using Tkinter and Pillow for pixel-level image processing, with batch logging and color quantization analytics.</p>
                         </div>
                         <div class="card-footer">
@@ -131,35 +128,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
-                        <div class="card-body">
-                            <h3 class="project-title">IoT Weather Monitor</h3>
-                            <p class="project-description">Collected and displayed real-time temperature and humidity data using Python and sensors on a Raspberry Pi.</p>
-                        </div>
-                        <div class="card-footer">
-                            <ul class="tech-list">
-                                <li>Python</li>
-                                <li>Raspberry Pi</li>
-                                <li>Sensors</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
-                        <div class="card-body">
-                            <h3 class="project-title">Robotic Rover</h3>
-                            <p class="project-description">Designed and built a robotic rover with a soft-holding gripper and 5+ environmental sensors for real-time adjustments.</p>
-                        </div>
-                        <div class="card-footer">
-                            <ul class="tech-list">
-                                <li>Arduino</li>
-                                <li>Sensors</li>
-                                <li>Robotics</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                     </div>
             </section>
 
             <section id="contact" class="content-section">
@@ -169,6 +138,10 @@
                 <a href="mailto:t.v.manojkumar19@gmail.com" class="cta-button">Say Hello</a>
             </section>
         </main>
+        
+        <footer>
+            <p>Designed by Brittany Chiang & Built by Manoj Kumar</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
