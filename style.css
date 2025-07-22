@@ -1,56 +1,107 @@
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000;
+    color: white;
+    overflow: hidden; /* Prevents scrollbars on main page */
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
-.hero {
-    background-image: url('assets\img\bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    padding: 200px 0;
-}
-
-.hero-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.about,
-.skills,
-.projects,
-.contact {
-    background-color: #f9f9f9;
-    padding: 80px 0;
-}
-
-h2 {
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-.project {
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
+#info-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    text-align: left;
+}
+
+#info-box p {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#contact-links a {
+    color: #90c3ff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal-content {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    border: 1px solid #444;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#modal-body h2 {
+    color: #90c3ff;
+    border-bottom: 2px solid #90c3ff;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+#modal-body h3 {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+#modal-body h4 {
+    color: #cccccc;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+#modal-body ul {
+    list-style-type: '✓  ';
+    padding-left: 20px;
+}
+
+#modal-body p, #modal-body li {
+    line-height: 1.6;
+}
+
+#modal-body strong {
+    color: #8aff8a;
 }

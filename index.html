@@ -1,149 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Manoj Kumar</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoj Kumar | 3D Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container">
-
-      <h1><a href="index.html">Manoj Kumar</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-      <h2>I'm a passionate <span>tech enthusiast</span> from India</h2>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#resume">Experience</a></li>
-          <li><a class="nav-link" href="#portfolio">Projects</a></li>
-          <li><a class="nav-link" href="assets\MANOJ_KUMAR_T_RESUME_2023.pdf">Resume</a></li>
-      <!--  <li><a class="nav-link" href="#contact">Contact</a></li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <div class="social-links">
-        <a href="https://github.com/t-manojkumar" class="github"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/manojkumar-t/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        <a href="https://www.behance.net/manojkumart" class="behance"><i class="bi bi-behance"></i></a>
-        <a href="https://www.instagram.com/m.a.n.o.j_t/" class="instagram"><i class="bi bi-instagram"></i></a>
-        
-      </div>
-
+    <div id="info-box">
+        <p>Manoj Kumar</p>
+        <div id="contact-links">
+            <a href="https://linkedin.com/in/manojkumar-t" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/t-manojkumar" target="_blank">GitHub</a> | 
+            <a href="mailto:t.v.manojkumar19@gmail.com">Email</a>
+        </div>
     </div>
-  </header><!-- End Header -->
+    <canvas id="bg"></canvas>
 
-  <!-- ======= Experience Section ======= -->
-  <section id="resume" class="resume">
-    <div class="container">
+    <div id="modal-container" class="hidden">
+        <div id="modal-content">
+            <button id="close-modal">&times;</button>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
 
-      <div class="section-title">
+    <div id="experience-content" class="hidden">
         <h2>Experience</h2>
-        <p>Check My Experience</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">        
-          <h3 class="resume-title">Education</h3>
-          <div class="resume-item">
-            <h4>B.Tech in Information Technology </h4>
-            <h5>2022 - 2025</h5>
-            <p><em>Dr.M.G.R. Educational and Research Institute</em></p>
-            <p><em>Chennai,IN</em></p>
-          </div>
-          <div class="resume-item">
-            <h4>Diploma in Mechatronics</h4>
-            <h5>2017 - 2020</h5>
-            <p><em>NTTF - Nettur Technical Training Foundation</em></p>
-            <p><em>Bangalore,IN</em></p>
-          </div>
-          <div class="resume-item">
-            <h4>HSC in Computer science</h4>
-            <h5>2015 - 2017</h5>
-            <p><em>Gandhinagar Matriculation Higher Secondary School</em></p>
-            <p><em>Tiruvannamalai, IN</em></p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <h3 class="resume-title">Professional Experience</h3>
-          <div class="resume-item">
-            <h4>Technician-GBS Engineering 
-            </h4>
-            <h5>2020—2022</h5>
-            <p><em>FLEXTRONICS TECHNOLOGIES INDIA PVT LTD, Chennai, IN</em></p>
-            <p>
-            <ul>
-              <li>Responsible for Creating parts, Documents, Bill of Materials (BOM) both for NPI (New Product Introduction)
-                and Sustaining Products.</li>
-              <li>Creating Engineering change orders (ECO) and Requests for Action (RFA) in Oracle Agile PLM.</li>
-              <li>BOM Structuring, managed product databases in Agile PLM and Dealing with BAAN ERP.</li>
-              <li>Responsible for creating and maintaining audit documents like SOP, Control plan, and FMEA.</li>
-              <li>Modifying Change Orders for Life Cycle status, AML Details, suggesting an Alternate or Manufacturing Part
-                Number (MPN), Adding and removing BOM changes using Oracle Agile PLM.</li>
-            </ul>
-            </p>
-          </div>
-          <div class="resume-item">
-            <h4>Trainee</h4>
-            <h5>2020 - 2020</h5>
-            <p><em>SANSERA ENGINEERING LIMITED, Bangalore, IN</em></p>
-            <p>
-            <ul>
-              <li>Monitoring and operating machines in a manufacturing setting.</li>
-              <li>Documented all maintenance and repairs performed on equipment</li>
-              <li>Troubleshooting the malfunctions and completing the required repairs to keep equipment fully functional
-                and well-maintained</li>
-              <li>Maintaining machine documents like Control plan, machine diagram, and Part datasheets</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-
+        <h3>Technician-GBS Engineer</h3>
+        <h4>Flextronics Technologies (India) Pvt Ltd | Chennai, India</h4>
+        <p><i>October 2020 – February 2022</i></p>
+        <ul>
+            <li>Managed large-scale product lifecycle and supply chain data, handling up to 1 million parts in Oracle Agile PLM and Baan ERP, <strong>improving data integrity by 40%</strong>.</li>
+            <li>Automated ECOs and RFAs, <strong>reducing processing time by 20%</strong>, improving workflow efficiency, and minimizing manual errors.</li>
+            <li>Developed structured BOMs for NPI and sustaining products, achieving 99% accuracy in component tracking.</li>
+            <li>Led BOM optimization, enhancing data accuracy by 30% and reducing manufacturing duplicates.</li>
+        </ul>
     </div>
-  </section>
-  <!-- End Resume Section -->
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    <div id="projects-content" class="hidden">
+        <h2>Projects</h2>
+        <h3>IPFS: A New Frontier for Next-Gen IoT Communication</h3>
+        <p>Developed a distributed system using IPFS and Python to automate over 100 daily data transactions. Applied statistical methods for analysis and generated trend-based reports. <i>(Presented at ICCET 2025, awarded for best project)</i></p>
+        <h3>Image Pixelation and Colour Quantization Tool</h3>
+        <p>Created a GUI tool in Python using Tkinter and Pillow for pixel-level image processing, integrating batch operation logging and data analytics.</p>
+        <h3>IoT Weather Monitor using Raspberry Pi</h3>
+        <p>Collected and displayed real-time temperature and humidity data using Python and electronic sensors to simulate a monitoring system.</p>
+        <h3>Robotic Rover</h3>
+        <p>Designed and built a robotic rover with a soft-holding gripper and integrated 5+ environmental sensors to monitor temperature, humidity, and air quality.</p>
+    </div>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <div id="skills-content" class="hidden">
+        <h2>Skills</h2>
+        <p><strong>Software/Platforms:</strong> Power BI, Excel, SQL, Notion, Baan ERP, Agile PLM, Jira, Office365.</p>
+        <p><strong>Simulation Software:</strong> SIEMENS TIA PORTAL V13, Proteus.</p>
+        <p><strong>Hardware:</strong> Arduino, Raspberry Pi, ESP32, ESP8266, Siemens S7 300 PLC.</p>
+        <p><strong>Languages:</strong> Python, Shell Scripting, HTML, CSS, JavaScript.</p>
+        <p><strong>DevOps Tools:</strong> Google Cloud Platform, VirtualBox, Kubernetes, Docker, Git & GitHub.</p>
+        <p><strong>Soft Skills:</strong> Communication, Root Cause Analysis, Problem-solving, Quick Learner, Team Collaboration.</p>
+    </div>
 
+    <div id="education-content" class="hidden">
+        <h2>Education & Certificates</h2>
+        <h3>Education</h3>
+        <p><strong>Bachelor of Technology, Information Technology</strong><br>Dr. M.G.R. Educational and Research Institute (2022 - 2025)</p>
+        <p><strong>Diploma in Mechatronics</strong><br>NTTF - Nettur Technical Training Foundation (2017 - 2020)</p>
+        <h3>Certificates</h3>
+        <p>Google Data Analytics Professional Certificate (2025)</p>
+        <p>Harvard CS50's Understanding Technology (2023)</p>
+        <p>Google IT Support Specialization (2022)</p>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="main.js"></script>
 </body>
-
 </html>
