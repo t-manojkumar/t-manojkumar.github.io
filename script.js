@@ -1,43 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.main-section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    // --- Header Reveal on Scroll ---
-    const header = document.querySelector('header');
-    let lastScrollY = window.scrollY;
+    const options = {
+        root: null, // observes intersections relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.3 // 30% of the section must be visible
+    };
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) { // Add scrolled class after 100px
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        lastScrollY = window.scrollY;
-    });
-
-
-    // --- Scroll Animations for Content Sections ---
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                // Remove active class from all nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Find the corresponding nav link and add the active class
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
             }
         });
-    }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
-    });
+    }, options);
 
-    const sections = document.querySelectorAll('.content-section');
+    // Observe each section
     sections.forEach(section => {
         observer.observe(section);
-    });
-
-
-    // --- Smooth scrolling for nav links ---
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
     });
 });

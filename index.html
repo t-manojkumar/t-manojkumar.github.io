@@ -1,147 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Kumar</title>
+    <title>Manoj Kumar | IT & Mechatronics Specialist</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <a href="#">MK</a>
+    <div class="main-container">
+        <header class="left-column">
+            <div>
+                <h1 class="name"><a href="#">Manoj Kumar</a></h1>
+                <h2 class="title">IT Student & Mechatronics Specialist</h2>
+                <p class="bio">I build efficient data systems and automated IoT solutions.</p>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a class="nav-link" href="#about"><span class="nav-indicator"></span>About</a></li>
+                        <li><a class="nav-link" href="#experience"><span class="nav-indicator"></span>Experience</a></li>
+                        <li><a class="nav-link" href="#projects"><span class="nav-indicator"></span>Projects</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ol>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ol>
-                <a href="resume.pdf" target="_blank" class="resume-button">Resume</a>
-            </nav>
-        </header>
-
-        <div class="side-elements-left">
-            <ul>
-                <li><a href="https://github.com/t-manojkumar" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <ul class="social-links">
+                <li><a href="https://github.com/t-manojkumar" target="_blank" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="social-icon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
                 </a></li>
-                <li><a href="https://linkedin.com/in/manojkumar-t" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <li><a href="https://linkedin.com/in/manojkumar-t" target="_blank" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
                 </a></li>
             </ul>
-        </div>
-        <div class="side-elements-right">
-            <div class="email-link">
-                <a href="mailto:t.v.manojkumar19@gmail.com">t.v.manojkumar19@gmail.com</a>
-            </div>
-        </div>
+        </header>
 
-        <main>
-            <section class="hero">
-                <p class="intro animated-fade">Hi, my name is</p>
-                <h1 class="name animated-fade">Manoj Kumar.</h1>
-                <h2 class="tagline animated-fade">I build efficient systems and solutions.</h2>
-                <p class="description animated-fade">
-                    I'm a tech enthusiast with a dual background in Information Technology and Mechatronics, specializing in data management, process automation, and IoT solutions. I thrive on solving complex problems and turning data into actionable insights.
-                </p>
+        <main class="right-column" id="content">
+            <section id="about" class="main-section">
+                <p>Hello! I'm Manoj, an engineer passionate about the intersection of hardware and software. My journey started with Mechatronics, building robotic systems and working with industrial automation. This gave me a solid foundation in how things work in the real world.</p>
+                <p>Transitioning into Information Technology, I applied that systematic approach to the digital realm. At Flextronics, I managed massive datasets and automated critical engineering workflows, significantly boosting data integrity by 40% and cutting processing time by 20%.</p>
             </section>
-
-            <section id="about" class="content-section">
-                <h2 class="section-heading"><span>01.</span> About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Hello! I'm Manoj, an engineer passionate about the intersection of hardware and software. My journey started with a Diploma in Mechatronics, building robotic systems and working with industrial automation. This gave me a solid foundation in how things work in the real world.</p>
-                        <p>Transitioning into Information Technology, I applied that systematic approach to the digital realm. At Flextronics, I managed massive datasets and automated critical engineering workflows, significantly boosting data integrity and efficiency. I love diving into data, finding patterns, and building tools that make processes smarter.</p>
-                        <p>Here are a few technologies I’ve been working with recently:</p>
-                        <ul class="skills-list">
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>Power BI</li>
-                            <li>Google Cloud Platform</li>
-                            <li>Docker</li>
-                            <li>Raspberry Pi / Arduino</li>
-                        </ul>
-                    </div>
-                    <div class="about-image">
-                        <div class="image-wrapper">
-                            <img src="profile.jpg" alt="Manoj Kumar">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience" class="content-section">
-                <h2 class="section-heading"><span>02.</span> Where I’ve Worked</h2>
-                <ul class="experience-list">
-                    <li class="experience-item">
-                        <div class="experience-content">
-                            <h3 class="experience-title">Technician-GBS Engineer <span class="company">@ Flextronics</span></h3>
-                            <p class="experience-date">Oct 2020 – Feb 2022</p>
-                            <ul class="experience-details">
-                                <li>Managed product lifecycle data for over 1 million parts using Oracle Agile PLM and Baan ERP, improving data integrity by 40%.</li>
-                                <li>Automated Engineering Change Orders (ECOs) and Requests for Alternate (RFAs), cutting processing time by 20%.</li>
-                                <li>Developed and maintained structured Bills of Materials (BOMs) for NPI, achieving 99% accuracy in component tracking.</li>
+            
+            <section id="experience" class="main-section">
+                <h2>Experience</h2>
+                <ol class="experience-list">
+                    <li>
+                        <a href="#" class="experience-card">
+                            <header class="card-header">
+                                <p class="date">2020 — 2022</p>
+                                <h3 class="job-title">Technician-GBS Engineer · Flextronics</h3>
+                            </header>
+                            <div class="card-body">
+                                <p>Managed large-scale product lifecycle data, handling up to 1 million parts in Oracle Agile PLM and Baan ERP. Automated engineering changes, developed structured BOMs, and led data optimization to enhance accuracy and efficiency.</p>
+                            </div>
+                            <ul class="tech-list">
+                                <li>Oracle Agile PLM</li>
+                                <li>Baan ERP</li>
+                                <li>Process Automation</li>
+                                <li>Data Integrity</li>
                             </ul>
-                        </div>
+                        </a>
                     </li>
-                    </ul>
+                </ol>
             </section>
-
-            <section id="projects" class="content-section">
-                <h2 class="section-heading"><span>03.</span> Some Things I’ve Built</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="card-header">
-                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="project-title"><a href="#">IPFS for IoT Communication</a></h3>
-                            <p class="project-description">A distributed system using IPFS and Python to automate data transactions, featuring statistical analysis for latency and error detection.</p>
-                        </div>
-                        <div class="card-footer">
+            
+            <section id="projects" class="main-section">
+                <h2>Projects</h2>
+                <ul class="projects-list">
+                    <li>
+                        <a href="#" class="project-card">
+                            <header>
+                                <h3 class="project-title">IPFS for IoT Communication</h3>
+                            </header>
+                            <p>Developed a distributed system using IPFS and Python to automate over 100 daily data transactions. Applied statistical methods for latency and error analysis. Awarded best project at ICCET 2025.</p>
                             <ul class="tech-list">
                                 <li>Python</li>
                                 <li>IPFS</li>
                                 <li>Statistics</li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                         <div class="card-header">
-                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="project-title"><a href="#">Image Pixelation Tool</a></h3>
-                            <p class="project-description">A Python GUI tool using Tkinter and Pillow for pixel-level image processing, with batch logging and color quantization analytics.</p>
-                        </div>
-                        <div class="card-footer">
-                            <ul class="tech-list">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                             <header>
+                                <h3 class="project-title">Image Pixelation & Quantization Tool</h3>
+                            </header>
+                            <p>Created a GUI tool in Python using Tkinter and Pillow for pixel-level image processing, integrating batch operation logging and data analytics for color quantization.</p>
+                             <ul class="tech-list">
                                 <li>Python</li>
                                 <li>Tkinter</li>
                                 <li>Pillow</li>
                             </ul>
-                        </div>
-                    </div>
-                     </div>
-            </section>
-
-            <section id="contact" class="content-section">
-                <h2 class="section-heading-contact"><span>04.</span> What’s Next?</h2>
-                <h3 class="contact-title">Get In Touch</h3>
-                <p class="contact-text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out!</p>
-                <a href="mailto:t.v.manojkumar19@gmail.com" class="cta-button">Say Hello</a>
+                        </a>
+                    </li>
+                    </ul>
             </section>
         </main>
-        
-        <footer>
-            <p>Designed by Brittany Chiang & Built by Manoj Kumar</p>
-        </footer>
     </div>
     <script src="script.js"></script>
 </body>
