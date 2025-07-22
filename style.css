@@ -17,26 +17,26 @@
 html, body {
     height: 100%;
     overflow: hidden;
-    /* REMOVED background-color from here */
     color: var(--text-secondary);
     font-family: var(--font-sans);
+    background-color: var(--bg-color); /* Set a base background color */
 }
 
-/* FIX #1: The glow effect is now attached to the body */
-body::before {
-    content: '';
+/* FIX #3: New method for the cursor glow */
+.cursor-glow {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: radial-gradient(
-        800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+        800px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
         rgba(29, 78, 216, 0.15),
         transparent 80%
     );
-    z-index: -1; /* This places it behind everything */
+    z-index: 1;
     pointer-events: none;
+    transition: background 0.2s ease-out; /* Note: transitions on gradients can be slow */
 }
 
 .main-container {
@@ -45,17 +45,15 @@ body::before {
     max-width: 1200px;
     margin: 0 auto;
     height: 100vh;
-    position: relative;
-    /* FIX #1: Background color moved here from body */
-    background-color: var(--bg-color);
+    position: relative; /* Make sure content is on top of the glow */
+    z-index: 2;
 }
-
 
 /* --- Left Column --- */
 .left-column {
     grid-column: 1 / 2;
     padding: 6rem 3rem;
-    position: sticky;
+    position: sticky; /* Sticky is fine as its parent isn't scrolling */
     top: 0;
     height: 100vh;
     display: flex;
@@ -108,8 +106,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
-.nav-link:hover .nav-indicator,
-.nav-link.active .nav-indicator {
+.nav-link:hover .nav-indicator, .nav-link.active .nav-indicator {
     width: 4rem;
     background-color: var(--text-primary);
 }
@@ -126,50 +123,19 @@ body::before {
     background-color: var(--text-accent);
 }
 
-
-.social-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.social-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover .social-icon {
-    color: var(--text-accent);
-}
-
 /* --- Right Column --- */
 .right-column {
     grid-column: 2 / 3;
     overflow-y: auto;
     padding: 6rem 3rem;
-    position: relative;
 }
 
-.right-column::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 60%;
-    max-width: calc(1200px * 0.6);
-    background: linear-gradient(to bottom, var(--bg-color) 0%, transparent 6rem, transparent calc(100% - 6rem), var(--bg-color) 100%);
-    pointer-events: none;
-    z-index: 20;
-}
-
+/* FIX #1: Custom scrollbar styling */
 .right-column::-webkit-scrollbar {
   width: 8px;
 }
 .right-column::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: transparent;
 }
 .right-column::-webkit-scrollbar-thumb {
   background-color: var(--card-border-color);
@@ -195,10 +161,8 @@ body::before {
     margin-bottom: 2rem;
 }
 
-.experience-list, .projects-list {
-    list-style: none;
-}
-
+/* --- Cards --- */
+.experience-list, .projects-list { list-style: none; }
 .experience-card, .project-card {
     display: block;
     padding: 1.5rem;
@@ -209,48 +173,22 @@ body::before {
     color: var(--text-secondary);
     transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 .experience-card:hover, .project-card:hover {
     background-color: var(--card-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     border-color: var(--card-border-color);
 }
-
-.experience-card .card-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-}
-
-.date {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
+.experience-card .card-header { display: flex; align-items: baseline; gap: 1rem; }
+.date { font-size: 0.8rem; text-transform: uppercase; }
 .job-title, .project-title {
     color: var(--text-primary);
     font-size: 1.1rem;
     font-weight: 500;
     transition: color 0.3s ease;
 }
-
-.experience-card:hover .job-title,
-.project-card:hover .project-title {
-    color: var(--text-accent);
-}
-
-.card-body {
-    margin-top: 1rem;
-}
-
-.tech-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
+.experience-card:hover .job-title, .project-card:hover .project-title { color: var(--text-accent); }
+.card-body { margin-top: 1rem; }
+.tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 .tech-list li {
     background-color: rgba(94, 234, 212, 0.1);
     color: var(--text-accent);
@@ -260,6 +198,44 @@ body::before {
     font-weight: 500;
 }
 
+/* FIX #2: New class for fixed social links */
+.fixed-social-links {
+    position: fixed;
+    bottom: 0;
+    left: 2rem;
+    z-index: 3;
+}
+
+.fixed-social-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.fixed-social-links::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 90px;
+    margin: 1rem auto 0;
+    background-color: var(--text-secondary);
+}
+
+.social-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fixed-social-links a:hover .social-icon {
+    color: var(--text-accent);
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
 @media (max-width: 1024px) {
     html, body {
         height: auto;
@@ -269,19 +245,11 @@ body::before {
         display: block;
         height: auto;
     }
-    .left-column {
-        position: static;
-        height: auto;
-        padding: 2rem 1.5rem;
-    }
-    .main-nav {
+    .left-column, .fixed-social-links, .right-column::after {
         display: none;
     }
     .right-column {
         padding: 2rem 1.5rem;
         overflow-y: visible;
-    }
-    .right-column::after {
-        display: none;
     }
 }
