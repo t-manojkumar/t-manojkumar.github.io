@@ -3,82 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Kumar | 3D Portfolio</title>
+    <title>Manoj Kumar</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="info-box">
-        <p>Manoj Kumar</p>
-        <div id="contact-links">
-            <a href="https://linkedin.com/in/manojkumar-t" target="_blank">LinkedIn</a> | 
-            <a href="https://github.com/t-manojkumar" target="_blank">GitHub</a> | 
-            <a href="mailto:t.v.manojkumar19@gmail.com">Email</a>
-        </div>
-    </div>
-    <canvas id="bg"></canvas>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="#">MK</a>
+            </div>
+            <nav>
+                <ol>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ol>
+                <a href="resume.pdf" target="_blank" class="resume-button">Resume</a>
+            </nav>
+        </header>
 
-    <div id="modal-container" class="hidden">
-        <div id="modal-content">
-            <button id="close-modal">&times;</button>
-            <div id="modal-body">
+        <div class="side-elements-left">
+            <ul>
+                <li><a href="https://github.com/t-manojkumar" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a></li>
+                <li><a href="https://linkedin.com/in/manojkumar-t" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a></li>
+            </ul>
+        </div>
+        <div class="side-elements-right">
+            <div class="email-link">
+                <a href="mailto:t.v.manojkumar19@gmail.com">t.v.manojkumar19@gmail.com</a>
+            </div>
+        </div>
+
+        <main>
+            <section class="hero">
+                <p class="intro">Hi, my name is</p>
+                <h1 class="name">Manoj Kumar.</h1>
+                <h2 class="tagline">I build efficient systems and solutions.</h2>
+                <p class="description">
+                    I'm a tech enthusiast with a dual background in Information Technology and Mechatronics, specializing in data management, process automation, and IoT solutions. I thrive on solving complex problems and turning data into actionable insights.
+                </p>
+                <a href="#projects" class="cta-button">Check out my projects!</a>
+            </section>
+
+            <section id="about" class="content-section">
+                <h2 class="section-heading"><span>01.</span> About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello! I'm Manoj, an engineer passionate about the intersection of hardware and software. My journey started with a Diploma in Mechatronics, building robotic systems and working with industrial automation. This gave me a solid foundation in how things work in the real world.</p>
+                        <p>Transitioning into Information Technology, I applied that systematic approach to the digital realm. At Flextronics, I managed massive datasets and automated critical engineering workflows, significantly boosting data integrity and efficiency. I love diving into data, finding patterns, and building tools that make processes smarter.</p>
+                        <p>Here are a few technologies I’ve been working with recently:</p>
+                        <ul class="skills-list">
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>Power BI</li>
+                            <li>Google Cloud Platform</li>
+                            <li>Docker</li>
+                            <li>Raspberry Pi / Arduino</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                             <img src="profile.jpg" alt="Manoj Kumar">
+                        </div>
+                    </div>
                 </div>
-        </div>
-    </div>
+            </section>
 
-    <div id="experience-content" class="hidden">
-        <h2>Experience</h2>
-        <h3>Technician-GBS Engineer</h3>
-        <h4>Flextronics Technologies (India) Pvt Ltd | Chennai, India</h4>
-        <p><i>October 2020 – February 2022</i></p>
-        <ul>
-            <li>Managed large-scale product lifecycle and supply chain data, handling up to 1 million parts in Oracle Agile PLM and Baan ERP, <strong>improving data integrity by 40%</strong>.</li>
-            <li>Automated ECOs and RFAs, <strong>reducing processing time by 20%</strong>, improving workflow efficiency, and minimizing manual errors.</li>
-            <li>Developed structured BOMs for NPI and sustaining products, achieving 99% accuracy in component tracking.</li>
-            <li>Led BOM optimization, enhancing data accuracy by 30% and reducing manufacturing duplicates.</li>
-        </ul>
-    </div>
+            <section id="experience" class="content-section">
+                <h2 class="section-heading"><span>02.</span> Where I’ve Worked</h2>
+                <div class="experience-tabs">
+                    <div class="tab-list">
+                        <button class="tab-item active" data-tab="flextronics">Flextronics</button>
+                    </div>
+                    <div class="tab-content">
+                        <div class="content-item active" id="flextronics">
+                            <h3>Technician-GBS Engineer <span class="company">@ <a href="#">Flextronics</a></span></h3>
+                            <p class="date">Oct 2020 – Feb 2022</p>
+                            <ul>
+                                <li>Managed product lifecycle data for over 1 million parts using Oracle Agile PLM and Baan ERP, improving data integrity by 40%.</li>
+                                <li>Automated Engineering Change Orders (ECOs) and Requests for Alternate (RFAs), cutting processing time by 20% and minimizing errors.</li>
+                                <li>Developed and maintained structured Bills of Materials (BOMs) for NPI, achieving 99% accuracy in component tracking.</li>
+                                <li>Led BOM optimization initiatives that enhanced data accuracy by 30% and reduced manufacturing duplicates.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="projects-content" class="hidden">
-        <h2>Projects</h2>
-        <h3>IPFS: A New Frontier for Next-Gen IoT Communication</h3>
-        <p>Developed a distributed system using IPFS and Python to automate over 100 daily data transactions. Applied statistical methods for analysis and generated trend-based reports. <i>(Presented at ICCET 2025, awarded for best project)</i></p>
-        <h3>Image Pixelation and Colour Quantization Tool</h3>
-        <p>Created a GUI tool in Python using Tkinter and Pillow for pixel-level image processing, integrating batch operation logging and data analytics.</p>
-        <h3>IoT Weather Monitor using Raspberry Pi</h3>
-        <p>Collected and displayed real-time temperature and humidity data using Python and electronic sensors to simulate a monitoring system.</p>
-        <h3>Robotic Rover</h3>
-        <p>Designed and built a robotic rover with a soft-holding gripper and integrated 5+ environmental sensors to monitor temperature, humidity, and air quality.</p>
-    </div>
+            <section id="projects" class="content-section">
+                <h2 class="section-heading"><span>03.</span> Some Things I’ve Built</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="project-title">IPFS for IoT Communication</h3>
+                            <p class="project-description">A distributed system using IPFS and Python to automate data transactions, featuring statistical analysis for latency and error detection.</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="tech-list">
+                                <li>Python</li>
+                                <li>IPFS</li>
+                                <li>Statistics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
+                        <div class="card-body">
+                            <h3 class="project-title">Image Pixelation Tool</h3>
+                            <p class="project-description">A Python GUI tool using Tkinter and Pillow for pixel-level image processing, with batch logging and color quantization analytics.</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="tech-list">
+                                <li>Python</li>
+                                <li>Tkinter</li>
+                                <li>Pillow</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
+                        <div class="card-body">
+                            <h3 class="project-title">IoT Weather Monitor</h3>
+                            <p class="project-description">Collected and displayed real-time temperature and humidity data using Python and sensors on a Raspberry Pi.</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="tech-list">
+                                <li>Python</li>
+                                <li>Raspberry Pi</li>
+                                <li>Sensors</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-header"><svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><title>Folder</title><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg></div>
+                        <div class="card-body">
+                            <h3 class="project-title">Robotic Rover</h3>
+                            <p class="project-description">Designed and built a robotic rover with a soft-holding gripper and 5+ environmental sensors for real-time adjustments.</p>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="tech-list">
+                                <li>Arduino</li>
+                                <li>Sensors</li>
+                                <li>Robotics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <div id="skills-content" class="hidden">
-        <h2>Skills</h2>
-        <p><strong>Software/Platforms:</strong> Power BI, Excel, SQL, Notion, Baan ERP, Agile PLM, Jira, Office365.</p>
-        <p><strong>Simulation Software:</strong> SIEMENS TIA PORTAL V13, Proteus.</p>
-        <p><strong>Hardware:</strong> Arduino, Raspberry Pi, ESP32, ESP8266, Siemens S7 300 PLC.</p>
-        <p><strong>Languages:</strong> Python, Shell Scripting, HTML, CSS, JavaScript.</p>
-        <p><strong>DevOps Tools:</strong> Google Cloud Platform, VirtualBox, Kubernetes, Docker, Git & GitHub.</p>
-        <p><strong>Soft Skills:</strong> Communication, Root Cause Analysis, Problem-solving, Quick Learner, Team Collaboration.</p>
+            <section id="contact" class="content-section">
+                <h2 class="section-heading-contact"><span>04.</span> What’s Next?</h2>
+                <h3 class="contact-title">Get In Touch</h3>
+                <p class="contact-text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out!</p>
+                <a href="mailto:t.v.manojkumar19@gmail.com" class="cta-button">Say Hello</a>
+            </section>
+        </main>
     </div>
-
-    <div id="education-content" class="hidden">
-        <h2>Education & Certificates</h2>
-        <h3>Education</h3>
-        <p><strong>Bachelor of Technology, Information Technology</strong><br>Dr. M.G.R. Educational and Research Institute (2022 - 2025)</p>
-        <p><strong>Diploma in Mechatronics</strong><br>NTTF - Nettur Technical Training Foundation (2017 - 2020)</p>
-        <h3>Certificates</h3>
-        <p>Google Data Analytics Professional Certificate (2025)</p>
-        <p>Harvard CS50's Understanding Technology (2023)</p>
-        <p>Google IT Support Specialization (2022)</p>
-    </div>
-
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
-            }
-        }
-    </script>
-    <script type="module" src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
