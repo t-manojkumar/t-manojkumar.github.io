@@ -1,9 +1,10 @@
 :root {
-    --bg-color: #0f172a; /* bg-slate-900 */
-    --card-color: #1e293b; /* bg-slate-800/50 approximation */
-    --text-primary: #e2e8f0; /* text-slate-200 */
-    --text-secondary: #94a3b8; /* text-slate-400 */
-    --text-accent: #5eead4; /* text-teal-300 */
+    --bg-color: #0f172a;
+    --card-color: #1e293b;
+    --card-border-color: #334155;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-accent: #5eead4; /* Accent color for active/hover states */
     --font-sans: 'Inter', sans-serif;
 }
 
@@ -17,7 +18,15 @@ body {
     background-color: var(--bg-color);
     color: var(--text-secondary);
     font-family: var(--font-sans);
-    line-height: 1.6;
+}
+
+.main-container {
+    /* UPDATED: Changed grid layout for better proportions */
+    display: grid;
+    grid-template-columns: 40% 60%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .main-container::before {
@@ -34,13 +43,7 @@ body {
     );
     z-index: -1;
     pointer-events: none;
-}
-
-.main-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1200px;
-    margin: 0 auto;
+    transition: background 0.2s ease-out;
 }
 
 /* --- Left Column --- */
@@ -58,7 +61,7 @@ body {
 .name a {
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 2.5rem; /* text-4xl equivalent */
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -100,21 +103,25 @@ body {
     transition: all 0.3s ease;
 }
 
-.nav-link:hover .nav-indicator,
-.nav-link:hover {
+.nav-link:hover .nav-indicator {
     width: 4rem;
     background-color: var(--text-primary);
+}
+
+.nav-link:hover {
     color: var(--text-primary);
 }
 
+/* UPDATED: Active links now use the accent color */
 .nav-link.active .nav-indicator {
     width: 4rem;
-    background-color: var(--text-primary);
+    background-color: var(--text-accent);
 }
 .nav-link.active {
-    color: var(--text-primary);
+    color: var(--text-accent);
 }
 
+/* UPDATED: Align social icons horizontally */
 .social-links {
     list-style: none;
     display: flex;
@@ -129,13 +136,20 @@ body {
 }
 
 .social-links a:hover .social-icon {
-    color: var(--text-primary);
+    color: var(--text-accent);
 }
 
 /* --- Right Column --- */
 .right-column {
     grid-column: 2 / 3;
     padding: 6rem 3rem;
+}
+
+/* UPDATED: Improved readability */
+.right-column p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 .main-section {
@@ -146,14 +160,8 @@ body {
     color: var(--text-primary);
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    position: sticky;
-    top: 6rem;
-    background: var(--bg-color);
-    padding-bottom: 1rem;
-    z-index: 10;
 }
 
-/* Experience List */
 .experience-list, .projects-list {
     list-style: none;
 }
@@ -162,17 +170,17 @@ body {
     display: block;
     padding: 1.5rem;
     margin-bottom: 1rem;
-    border: 1px solid transparent; /* Add this */
+    border: 1px solid transparent;
     border-radius: 0.25rem;
     text-decoration: none;
     color: var(--text-secondary);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Update this */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .experience-card:hover, .project-card:hover {
     background-color: var(--card-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    border-color: #334155; /* Add this border color on hover */
+    border-color: var(--card-border-color);
 }
 
 .experience-card .card-header {
@@ -190,6 +198,17 @@ body {
     color: var(--text-primary);
     font-size: 1.1rem;
     font-weight: 500;
+    transition: color 0.3s ease; /* Add transition for smooth color change */
+}
+
+/* ADD THIS NEW RULE: Change title color on card hover */
+.experience-card:hover .job-title,
+.project-card:hover .project-title {
+    color: var(--text-accent);
+}
+
+.card-body {
+    margin-top: 1rem;
 }
 
 .tech-list {
@@ -201,7 +220,7 @@ body {
 }
 
 .tech-list li {
-    background-color: rgba(94, 234, 212, 0.1); /* bg-teal-400/10 */
+    background-color: rgba(94, 234, 212, 0.1);
     color: var(--text-accent);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
@@ -220,12 +239,9 @@ body {
         padding: 2rem 1.5rem;
     }
     .main-nav {
-        display: none; /* Simplification for mobile */
+        display: none;
     }
     .right-column {
         padding: 2rem 1.5rem;
-    }
-    .main-section h2 {
-        position: static;
     }
 }
