@@ -1,22 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Scrollspy Logic ---
     const sections = document.querySelectorAll('.main-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    const options = {
-        root: null, // observes intersections relative to the viewport
-        rootMargin: '0px',
-        threshold: 0.3 // 30% of the section must be visible
+    // FIX #4: Updated IntersectionObserver options for better accuracy
+    const observerOptions = {
+        root: document.querySelector('.right-column'), // Observe within the scrolling container
+        rootMargin: '-30% 0px -70% 0px', // Trigger when section is in the upper part of the view
+        threshold: 0
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Remove active class from all nav links
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                // Find the corresponding nav link and add the active class
+                navLinks.forEach(link => link.classList.remove('active'));
                 const id = entry.target.getAttribute('id');
                 const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
                 if (activeLink) {
@@ -24,10 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }, options);
+    }, observerOptions);
 
-    // Observe each section
     sections.forEach(section => {
         observer.observe(section);
+    });
+
+    // --- Cursor Glow Effect ---
+    // FIX #1: Changed selector to 'body' for full-page effect
+    const body = document.querySelector('body');
+    body.addEventListener('mousemove', e => {
+        // Use requestAnimationFrame for smoother updates
+        window.requestAnimationFrame(() => {
+            body.style.setProperty('--mouse-x', `${e.clientX}px`);
+            body.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
     });
 });
