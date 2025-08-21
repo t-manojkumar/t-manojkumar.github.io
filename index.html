@@ -62,39 +62,35 @@
         }
         @keyframes glitch-anim{
           0% { clip: rect(4px, 9999px, 3px, 0); }
-          /* ... (add more steps for a complex glitch) ... */
         }
         @keyframes glitch-anim2{
           0% { clip: rect(69px, 9999px, 93px, 0); }
-           /* ... (add more steps for a complex glitch) ... */
         }
-        /* Weather themes */
-        .weather-clear { background-color: #f0f8ff; }
-        .dark .weather-clear { background-color: #0b1120; }
-        .weather-clouds { background-color: #e6e6e6; }
-        .dark .weather-clouds { background-color: #1c1c1e; }
-        .weather-rain { background-color: #dbeafe; }
-        .dark .weather-rain { background-color: #1e293b; }
     </style>
 </head>
-<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 transition-colors duration-500 antialiased">
+<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 dark:text-stone-50 transition-colors duration-500 antialiased">
 
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors z-10">
-        <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-        <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-    </button>
+    <!-- Top Right Corner Controls -->
+    <div class="fixed top-4 right-4 flex items-center gap-4 z-10">
+        <div id="weather-widget" class="text-sm text-right text-gray-500 dark:text-gray-300 mono-font hidden">
+            <!-- Weather data will be injected here -->
+        </div>
+        <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+            <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+    </div>
 
     <main class="container mx-auto max-w-3xl px-8 py-16 lg:py-24">
         <!-- === Header === -->
         <header class="flex items-center gap-5 mb-16">
             <div id="profile-pic-container" class="w-24 h-24 rounded-full flex items-center justify-center cursor-pointer flex-shrink-0" title="Click me a few times!">
-                 <img src="profilepic.png" alt="Manoj Kumar" class="rounded-full w-24 h-24 border-4 border-white dark:border-gray-800 shadow-md">
+                 <img src="assets\profilepic.png" alt="Manoj Kumar" class="rounded-full w-24 h-24 border-4 border-white dark:border-gray-800 shadow-md">
             </div>
             <div>
                 <h1 class="text-4xl font-bold">Manoj Kumar</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400">IT Professional & Tech Enthusiast</p>
-                <p class="text-lg text-gray-600 dark:text-gray-400">#OpenToWork</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300">IT Professional & Tech Enthusiast</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300">#OpenToWork</p>
             </div>
         </header>
 
@@ -103,7 +99,7 @@
             <!-- About Section -->
             <section id="about" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/about</h2>
-                <div class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <div class="text-gray-700 dark:text-gray-200 leading-relaxed">
                     <p>A detail-oriented IT professional passionate about leveraging technology to create efficient, scalable solutions. With a background in both Mechatronics and IT, I enjoy solving complex problems, from streamlining data workflows to designing robust network infrastructure.</p>
                 </div>
             </section>
@@ -114,11 +110,11 @@
                 <div class="w-full">
                      <div>
                         <h3 class="font-bold">Technician-GBS Engineer</h3>
-                        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mb-2">
                             <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             <span>Flextronics Technologies | Oct 2020 - Feb 2022</span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm">
                             <li>Managed lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
                             <li>Automated ECOs, reducing processing time by 20%.</li>
                             <li>Developed structured BOMs, achieving 99% accuracy.</li>
@@ -130,7 +126,7 @@
             <!-- Projects Section -->
             <section id="projects" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/projects</h2>
-                <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-3">
+                <div class="text-gray-700 dark:text-gray-200 leading-relaxed space-y-3">
                     <p>I enjoy building tools and systems that solve real-world problems. Some of my work includes:</p>
                     <div class="flex items-center gap-2 group">
                         <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -174,7 +170,7 @@
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
                             Instagram
                         </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        <a href="assets\ManojKumar_RESUME.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             Resume
                         </a>
@@ -185,7 +181,7 @@
 
         <!-- === Footer === -->
         <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <img id="signature" src="sign.png" alt="Manoj Kumar Signature" class="mx-auto h-16 mb-4 dark:invert cursor-pointer">
+            <img id="signature" src="assets\sign.png" alt="Manoj Kumar Signature" class="mx-auto h-16 mb-4 dark:invert cursor-pointer">
             <p class="text-xs text-gray-500 dark:text-gray-400 mono-font" id="copyright">&copy; <span id="year"></span> Manoj Kumar</p>
         </footer>
     </main>
@@ -306,7 +302,7 @@
 
         copyright.addEventListener('click', () => {
             gameClickCount++;
-            if (gameClickCount >= 5) {
+            if (gameClickCount >= 3) {
                 gameModal.classList.remove('hidden');
                 gameModal.classList.add('flex');
                 startGame();
@@ -322,34 +318,37 @@
             }
         });
 
-        // === Easter Egg 5: Weather-Based Theme ===
-        const applyWeatherTheme = (weather) => {
-            document.body.classList.remove('weather-clear', 'weather-clouds', 'weather-rain');
-            if (weather.includes('Clear')) document.body.classList.add('weather-clear');
-            else if (weather.includes('Clouds')) document.body.classList.add('weather-clouds');
-            else if (weather.includes('Rain') || weather.includes('Drizzle') || weather.includes('Thunderstorm')) document.body.classList.add('weather-rain');
+        // === Easter Egg 5: Weather Widget ===
+        const weatherWidget = document.getElementById('weather-widget');
+        const getWeatherEmoji = (code) => {
+            if (code === 0) return '☀️';
+            if (code <= 3) return '☁️';
+            if (code <= 48) return '🌫️';
+            if (code <= 67) return '🌧️';
+            if (code <= 77) return '❄️';
+            if (code <= 99) return '⛈️';
+            return '🌍';
         };
 
-        // Fetch weather based on IP
         fetch('https://ipapi.co/json/')
             .then(res => res.json())
             .then(data => {
-                const { latitude, longitude } = data;
-                // NOTE: Using a free, no-key-required weather API.
-                return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+                const { latitude, longitude, city } = data;
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`;
+                return fetch(weatherUrl).then(res => res.json()).then(weatherData => ({...weatherData, city}));
             })
-            .then(res => res.json())
-            .then(weatherData => {
-                 // This API uses weather codes. We'll map a few simple ones.
-                const code = weatherData.current_weather.weathercode;
-                let weather = 'Clear';
-                if (code > 1 && code < 4) weather = 'Clouds';
-                if (code > 50) weather = 'Rain';
-                applyWeatherTheme(weather);
+            .then(data => {
+                const { current, city } = data;
+                const emoji = getWeatherEmoji(current.weather_code);
+                weatherWidget.innerHTML = `
+                    <div>${city} ${emoji}</div>
+                    <div>${current.temperature_2m}°C | ${current.relative_humidity_2m}% | ${current.wind_speed_10m}km/h</div>
+                `;
+                weatherWidget.classList.remove('hidden');
             })
             .catch(() => {
-                // Fallback if API fails
-                console.log("Could not fetch weather data.");
+                weatherWidget.innerHTML = `<div>Weather data unavailable</div>`;
+                weatherWidget.classList.remove('hidden');
             });
 
         // Set current year in footer
