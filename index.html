@@ -20,18 +20,64 @@
         .mono-font {
             font-family: 'Space Mono', monospace;
         }
-        /* Easter egg animation */
-        .easter-egg-spin {
-            animation: spin 1s ease-in-out;
-        }
+        /* Easter egg animations */
+        .easter-egg-spin { animation: spin 1s ease-in-out; }
         @keyframes spin {
             0% { transform: rotate(0deg) scale(1); }
             50% { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
         }
+        .signature-pop { animation: pop 0.5s ease-in-out; }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .glitch { animation: glitch 1s linear infinite; }
+        @keyframes glitch{
+          2%,64%{ transform: translate(2px,0) skew(0deg); }
+          4%,60%{ transform: translate(-2px,0) skew(0deg); }
+          62%{ transform: translate(0,0) skew(5deg); }
+        }
+        .glitch:before, .glitch:after{
+          content: attr(data-text);
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #f5f5f4;
+        }
+        .dark .glitch:before, .dark .glitch:after { background: #111827; }
+        .glitch:before{
+          left: 2px;
+          text-shadow: -2px 0 #4ade80;
+          clip: rect(44px, 450px, 56px, 0);
+          animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch:after{
+          left: -2px;
+          text-shadow: -2px 0 #ef4444, 2px 2px #3b82f6;
+          clip: rect(85px, 450px, 90px, 0);
+          animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim{
+          0% { clip: rect(4px, 9999px, 3px, 0); }
+          /* ... (add more steps for a complex glitch) ... */
+        }
+        @keyframes glitch-anim2{
+          0% { clip: rect(69px, 9999px, 93px, 0); }
+           /* ... (add more steps for a complex glitch) ... */
+        }
+        /* Weather themes */
+        .weather-clear { background-color: #f0f8ff; }
+        .dark .weather-clear { background-color: #0b1120; }
+        .weather-clouds { background-color: #e6e6e6; }
+        .dark .weather-clouds { background-color: #1c1c1e; }
+        .weather-rain { background-color: #dbeafe; }
+        .dark .weather-rain { background-color: #1e293b; }
     </style>
 </head>
-<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 dark:text-stone-200 transition-colors duration-300 antialiased">
+<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 transition-colors duration-500 antialiased">
 
     <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors z-10">
@@ -86,17 +132,17 @@
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/projects</h2>
                 <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-3">
                     <p>I enjoy building tools and systems that solve real-world problems. Some of my work includes:</p>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        <a href="https://github.com/t-manojkumar/MetadataApp" class="font-semibold underline hover:text-black dark:hover:text-white">Windows metadata extraction app</a>
+                    <div class="flex items-center gap-2 group">
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="https://github.com/t-manojkumar/MetadataApp" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Windows metadata extraction app">Windows metadata extraction app</a>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                        <a href="https://github.com/t-manojkumar/IPFS-IN-IOT" class="font-semibold underline hover:text-black dark:hover:text-white">IoT communication system using IPFS</a>
+                    <div class="flex items-center gap-2 group">
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                        <a href="https://github.com/t-manojkumar/IPFS-IN-IOT" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="IoT communication system using IPFS">IoT communication system using IPFS</a>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                        <a href="https://github.com/t-manojkumar/MINIPROJECT_RPI-MEDIA-CENTER" class="font-semibold underline hover:text-black dark:hover:text-white">Raspberry Pi-based NAS</a>
+                    <div class="flex items-center gap-2 group">
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                        <a href="https://github.com/t-manojkumar/MINIPROJECT_RPI-MEDIA-CENTER" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Raspberry Pi-based NAS">Raspberry Pi-based NAS</a>
                     </div>
                 </div>
             </section>
@@ -139,10 +185,22 @@
 
         <!-- === Footer === -->
         <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <img src="sign.png" alt="Manoj Kumar Signature" class="mx-auto h-24 mb-4 dark:invert">
-            <p class="text-xs text-gray-500 dark:text-gray-400 mono-font">&copy; <span id="year"></span> Manoj Kumar</p>
+            <img id="signature" src="sign.png" alt="Manoj Kumar Signature" class="mx-auto h-16 mb-4 dark:invert cursor-pointer">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mono-font" id="copyright">&copy; <span id="year"></span> Manoj Kumar</p>
         </footer>
     </main>
+
+    <!-- Tic-Tac-Toe Modal -->
+    <div id="game-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-20">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
+            <h2 class="text-2xl font-bold mb-4 text-center">Tic-Tac-Toe</h2>
+            <div id="game-board" class="grid grid-cols-3 gap-2 w-64 h-64 mx-auto">
+                <!-- Game cells will be generated by JS -->
+            </div>
+            <p id="game-status" class="text-center mt-4 font-semibold"></p>
+            <button id="reset-game" class="block mx-auto mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Reset</button>
+        </div>
+    </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -168,23 +226,131 @@
             moonIcon.classList.toggle('hidden', !isDark);
         });
         
-        // === Easter Egg Logic ===
+        // === Easter Egg 1: Profile Pic Spin ===
         const profilePic = document.getElementById('profile-pic-container');
-        let clickCount = 0;
-        let clickTimer;
-
+        let profileClickCount = 0;
         profilePic.addEventListener('click', () => {
-            clickCount++;
-            clearTimeout(clickTimer);
-            
-            if (clickCount >= 3) {
+            profileClickCount++;
+            if (profileClickCount >= 3) {
                 profilePic.classList.add('easter-egg-spin');
-                clickCount = 0;
+                profileClickCount = 0;
                 setTimeout(() => profilePic.classList.remove('easter-egg-spin'), 1000);
-            } else {
-                clickTimer = setTimeout(() => clickCount = 0, 1000);
             }
         });
+
+        // === Easter Egg 2: Interactive Signature ===
+        const signature = document.getElementById('signature');
+        const signatureSound = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA");
+        signature.addEventListener('click', () => {
+            signature.classList.add('signature-pop');
+            signatureSound.currentTime = 0;
+            signatureSound.play();
+            setTimeout(() => signature.classList.remove('signature-pop'), 500);
+        });
+
+        // === Easter Egg 3: Text Glitch Effect ===
+        document.querySelectorAll('[data-text]').forEach(el => {
+            el.addEventListener('mouseover', () => el.classList.add('glitch'));
+            el.addEventListener('mouseout', () => el.classList.remove('glitch'));
+        });
+
+        // === Easter Egg 4: Secret Game (Tic-Tac-Toe) ===
+        const copyright = document.getElementById('copyright');
+        const gameModal = document.getElementById('game-modal');
+        const gameBoard = document.getElementById('game-board');
+        const gameStatus = document.getElementById('game-status');
+        const resetGameBtn = document.getElementById('reset-game');
+        let gameClickCount = 0;
+        let board, currentPlayer, isGameActive;
+
+        const startGame = () => {
+            board = Array(9).fill(null);
+            currentPlayer = 'X';
+            isGameActive = true;
+            gameStatus.textContent = `Player ${currentPlayer}'s turn`;
+            gameBoard.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('border', 'border-gray-400', 'flex', 'items-center', 'justify-center', 'text-4xl', 'font-bold', 'cursor-pointer', 'hover:bg-gray-200', 'dark:hover:bg-gray-700');
+                cell.dataset.index = i;
+                cell.addEventListener('click', handleCellClick);
+                gameBoard.appendChild(cell);
+            }
+        };
+
+        const handleCellClick = (e) => {
+            const index = e.target.dataset.index;
+            if (board[index] || !isGameActive) return;
+            board[index] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            checkWinner();
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            if(isGameActive) gameStatus.textContent = `Player ${currentPlayer}'s turn`;
+        };
+        
+        const checkWinner = () => {
+            const winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for (let combo of winningCombos) {
+                const [a, b, c] = combo;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    isGameActive = false;
+                    gameStatus.textContent = `Player ${board[a]} wins!`;
+                    return;
+                }
+            }
+            if (!board.includes(null)) {
+                isGameActive = false;
+                gameStatus.textContent = "It's a draw!";
+            }
+        };
+
+        copyright.addEventListener('click', () => {
+            gameClickCount++;
+            if (gameClickCount >= 5) {
+                gameModal.classList.remove('hidden');
+                gameModal.classList.add('flex');
+                startGame();
+                gameClickCount = 0;
+            }
+        });
+        
+        resetGameBtn.addEventListener('click', startGame);
+        gameModal.addEventListener('click', (e) => {
+            if (e.target === gameModal) {
+                gameModal.classList.add('hidden');
+                gameModal.classList.remove('flex');
+            }
+        });
+
+        // === Easter Egg 5: Weather-Based Theme ===
+        const applyWeatherTheme = (weather) => {
+            document.body.classList.remove('weather-clear', 'weather-clouds', 'weather-rain');
+            if (weather.includes('Clear')) document.body.classList.add('weather-clear');
+            else if (weather.includes('Clouds')) document.body.classList.add('weather-clouds');
+            else if (weather.includes('Rain') || weather.includes('Drizzle') || weather.includes('Thunderstorm')) document.body.classList.add('weather-rain');
+        };
+
+        // Fetch weather based on IP
+        fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+                const { latitude, longitude } = data;
+                // NOTE: Using a free, no-key-required weather API.
+                return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+            })
+            .then(res => res.json())
+            .then(weatherData => {
+                 // This API uses weather codes. We'll map a few simple ones.
+                const code = weatherData.current_weather.weathercode;
+                let weather = 'Clear';
+                if (code > 1 && code < 4) weather = 'Clouds';
+                if (code > 50) weather = 'Rain';
+                applyWeatherTheme(weather);
+            })
+            .catch(() => {
+                // Fallback if API fails
+                console.log("Could not fetch weather data.");
+            });
 
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
