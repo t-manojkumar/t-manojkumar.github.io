@@ -3,138 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Kumar | IT & Mechatronics Specialist</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Manoj Kumar - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #1a1a1a; /* Dark text */
+        }
+        .mono-font {
+            font-family: 'Space Mono', monospace;
+        }
+        /* Custom scrollbar for a more subtle look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0a0a0;
+        }
+        .nav-link.active {
+            color: #000;
+            font-weight: 700;
+        }
+        /* Dashed circle effect from the image */
+        .dashed-circle {
+            border: 2px dashed #a0a0a0;
+        }
+        .content-section {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4rem;
+            margin-bottom: 4rem;
+        }
+        .content-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
-<body>
-    <div class="cursor-glow"></div>
+<body class="antialiased">
 
-    <div class="main-container">
-        <!-- LEFT COLUMN -->
-        <header class="left-column">
-            <div>
-                <h1 class="name"><a href="#" id="home-link">Manoj Kumar</a></h1>
-                <h2 class="title">IT Student & Mechatronics Specialist</h2>
-                <p class="bio">I build efficient data systems and automated IoT solutions.</p>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a class="nav-link" href="#about"><span class="nav-indicator"></span>About</a></li>
-                        <li><a class="nav-link" href="#experience"><span class="nav-indicator"></span>Experience</a></li>
-                        <li><a class="nav-link" href="#projects"><span class="nav-indicator"></span>Projects</a></li>
-                        <!-- ADDED: Photography link -->
-                        <li><a class="nav-link" href="#photography"><span class="nav-indicator"></span>Photography</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row min-h-screen">
+            <!-- === Left Sidebar (Navigation) === -->
+            <aside class="w-full lg:w-1/4 lg:fixed lg:h-screen p-8 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-300">
+                <div>
+                    <div class="flex items-center mb-8">
+                        <div class="w-20 h-20 rounded-full dashed-circle flex items-center justify-center mr-4">
+                             <!-- Placeholder for an image -->
+                             <img src="https://placehold.co/80x80/e2e8f0/e2e8f0?text=MK" alt="Manoj Kumar" class="rounded-full w-16 h-16" onerror="this.onerror=null;this.src='https://placehold.co/80x80/e2e8f0/333?text=MK';">
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-bold">Manoj Kumar</h1>
+                            <p class="mono-font text-sm text-gray-600">#OpenToWork</p>
+                        </div>
+                    </div>
+                    <nav id="nav-menu" class="flex flex-col space-y-4">
+                        <a href="#about" class="nav-link text-gray-500 hover:text-black transition-colors duration-300 mono-font">/about</a>
+                        <a href="#experience" class="nav-link text-gray-500 hover:text-black transition-colors duration-300 mono-font">/experience</a>
+                        <a href="#projects" class="nav-link text-gray-500 hover:text-black transition-colors duration-300 mono-font">/projects</a>
+                        <a href="#photography" class="nav-link text-gray-500 hover:text-black transition-colors duration-300 mono-font">/photography</a>
+                        <a href="#contact" class="nav-link text-gray-500 hover:text-black transition-colors duration-300 mono-font">/contact</a>
+                    </nav>
+                </div>
+                <div class="hidden lg:block text-center text-xs text-gray-400 mono-font">
+                    <p>&copy; <span id="year"></span> Manoj Kumar</p>
+                </div>
+            </aside>
 
-        <!-- RIGHT COLUMN -->
-        <main class="right-column" id="content">
-            <!-- UPDATED: About Section Content -->
-            <section id="about" class="main-section">
-                <p>✨ The kind of person who doesn’t wait to be told how, but figures it out and gets it done. I took an idea from an article and built an IPFS-based system for IoT communication. just curiosity, grit, and Python. That’s how I operate: learn fast, build faster.</p>
-                <p>🧠 At Flex, I went from zero to expert in data validation and transformation, managing over a million parts across Oracle Agile PLM and Baan ERP. I automated engineering processes, optimized BOMs, and streamlined inventory flows. The result? Fewer errors. Faster workflows. Smarter systems.</p>
-                <p>🛠️ Tech is my playground. I’ve built pixel-art generation tools, designed event graphics, developed applications for Windows, and explored everything from Docker to LMStudio (yes, I tinker with custom LLMs). Whether it’s Power BI, CAD, Office365, or Raspberry Pi I learn by doing and I deliver with confidence.</p>
-                <p>🪄 I’m currently diving into AI exploration (Gemini’s on my radar), experimenting with system architectures, and working on ideas that blend cloud, automation, and intelligence. Tools I speak fluently: GCP, Azure, Jira, Git/GitHub, office and more.</p>
-                <p>📸 Outside tech? I’m a mystery-chasing adventurer, travel photographer, and someone who sees art in data and stories in the sky. If it’s unfamiliar, I’m drawn to it. If it’s broken, I try to fix it.</p>
-            </section>
-            
-            <section id="experience" class="main-section">
-                <h2>Experience</h2>
-                <ol class="experience-list">
-                    <li>
-                        <a href="https://www.flex.com/" target="_blank" class="experience-card">
-                            <header class="card-header">
-                                <p class="date">2020 — 2022</p>
-                                <h3 class="job-title">Technician-GBS Engineer · Flextronics</h3>
-                            </header>
-                            <div class="card-body">
-                                <p>Managed large-scale product lifecycle data, handling up to 1 million parts in Oracle Agile PLM and Baan ERP. Automated engineering changes, developed structured BOMs, and led data optimization to enhance accuracy and efficiency.</p>
-                            </div>
-                            <ul class="tech-list">
-                                <li>Oracle Agile PLM</li>
-                                <li>Baan ERP</li>
-                                <li>Process Automation</li>
-                                <li>Data Integrity</li>
-                            </ul>
+            <!-- === Right Content Area === -->
+            <main class="w-full lg:w-3/4 lg:ml-[25%] p-8 md:p-16 lg:p-20">
+                <!-- About Section -->
+                <section id="about" class="content-section">
+                    <h2 class="text-2xl font-bold mb-6 mono-font">About Me</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>
+                            A detail-oriented IT professional with a background in Mechatronics and Information Technology. I have hands-on experience in product lifecycle management, data automation, and building robust IT infrastructure.
+                        </p>
+                        <p>
+                            I thrive on solving complex problems, whether it's streamlining data workflows or designing a secure home network from scratch. My skill set spans across hardware diagnostics, network management, and scripting with Python and SQL. I am passionate about leveraging technology to create efficient and scalable solutions.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="content-section">
+                    <h2 class="text-2xl font-bold mb-8 mono-font">Experience</h2>
+                    <div>
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl font-bold">Technician-GBS Engineer</h3>
+                            <p class="mono-font text-sm text-gray-500">Oct 2020 - Feb 2022</p>
+                        </div>
+                        <p class="text-md font-medium text-gray-600 mb-4">Flextronics Technologies (India) Pvt Ltd</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Managed large-scale product lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
+                            <li>Automated ECOs and RFAs, reducing processing time by 20% and improving workflow efficiency.</li>
+                            <li>Developed structured BOMs for NPI, achieving 99% accuracy in component tracking.</li>
+                            <li>Created custom dashboards and reports, increasing visibility into ECO metrics by 20%.</li>
+                            <li>Trained and mentored team members, leading to a 15% improvement in process adherence.</li>
+                            <li>Implemented data validation techniques to ensure 100% compliance with audit standards.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="content-section">
+                    <h2 class="text-2xl font-bold mb-8 mono-font">Technical Projects</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Project 1 -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl hover:border-black transition-all duration-300">
+                            <h3 class="text-lg font-bold mb-2">MetadataApp [Open Source]</h3>
+                            <p class="text-gray-600 text-sm">A Windows desktop app using C# and WinUI 3 to extract and display detailed image metadata. Features high-performance image processing with Magick.NET and a modern, responsive UI.</p>
+                        </div>
+                        <!-- Project 2 -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl hover:border-black transition-all duration-300">
+                            <h3 class="text-lg font-bold mb-2">IPFS for Next-Gen IoT</h3>
+                            <p class="text-gray-600 text-sm">Developed a distributed system using IPFS and Python to automate over 100 daily data transactions. Designed a modular architecture for scalable IoT environments, eliminating single points of failure.</p>
+                        </div>
+                        <!-- Project 3 -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl hover:border-black transition-all duration-300">
+                            <h3 class="text-lg font-bold mb-2">Home Lab NAS System</h3>
+                            <p class="text-gray-600 text-sm">Designed and administered a 24/7 Linux-based NAS using a Raspberry Pi for secure file sharing, automated backups, and media streaming in a multi-user home environment.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Photography Section -->
+                <section id="photography" class="content-section">
+                    <h2 class="text-2xl font-bold mb-8 mono-font">Photography</h2>
+                     <p class="text-gray-600 mb-8">A collection of moments and perspectives captured through my lens. This is a placeholder gallery.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                            <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+1" alt="Photography example 1" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+1';">
+                        </div>
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                            <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+2" alt="Photography example 2" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+2';">
+                        </div>
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                           <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+3" alt="Photography example 3" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+3';">
+                        </div>
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                            <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+4" alt="Photography example 4" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+4';">
+                        </div>
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                           <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+5" alt="Photography example 5" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+5';">
+                        </div>
+                        <div class="bg-white rounded-lg overflow-hidden border border-gray-200 aspect-square">
+                            <img src="https://placehold.co/600x600/e2e8f0/333?text=Photo+6" alt="Photography example 6" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e2e8f0/333?text=Photo+6';">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="content-section">
+                    <h2 class="text-2xl font-bold mb-8 mono-font">Get In Touch</h2>
+                    <div class="space-y-4">
+                        <a href="mailto:t.v.manojkumar19@gmail.com" class="flex items-center group">
+                            <div class="w-5 h-5 border border-gray-400 rounded-sm mr-4 flex-shrink-0 group-hover:bg-black"></div>
+                            <span class="text-gray-700 group-hover:text-black transition-colors duration-300">Mail</span>
                         </a>
-                    </li>
-                </ol>
-            </section>
-            
-            <section id="projects" class="main-section">
-                <h2>Projects</h2>
-                <ul class="projects-list">
-                    <li>
-                        <a href="https://github.com/t-manojkumar/IPFS-IOT" target="_blank" class="project-card">
-                            <header>
-                                <h3 class="project-title">IPFS for IoT Communication</h3>
-                            </header>
-                            <p>Developed a distributed system using IPFS and Python to automate over 100 daily data transactions. Applied statistical methods for latency and error analysis. Awarded best project at ICCET 2025.</p>
-                            <ul class="tech-list">
-                                <li>Python</li>
-                                <li>IPFS</li>
-                                <li>Statistics</li>
-                            </ul>
+                        <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener noreferrer" class="flex items-center group">
+                            <div class="w-5 h-5 border border-gray-400 rounded-sm mr-4 flex-shrink-0 group-hover:bg-black"></div>
+                            <span class="text-gray-700 group-hover:text-black transition-colors duration-300">LinkedIn</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/t-manojkumar/" target="_blank" class="project-card">
-                             <header>
-                                <h3 class="project-title">Image Pixelation & Quantization Tool</h3>
-                            </header>
-                            <p>Created a GUI tool in Python using Tkinter and Pillow for pixel-level image processing, integrating batch operation logging and data analytics for color quantization.</p>
-                             <ul class="tech-list">
-                                <li>Python</li>
-                                <li>Tkinter</li>
-                                <li>Pillow</li>
-                            </ul>
+                        <a href="https://github.com/tmanojkumar" target="_blank" rel="noopener noreferrer" class="flex items-center group">
+                            <div class="w-5 h-5 border border-gray-400 rounded-sm mr-4 flex-shrink-0 group-hover:bg-black"></div>
+                            <span class="text-gray-700 group-hover:text-black transition-colors duration-300">GitHub</span>
                         </a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- ADDED: New Photography Section -->
-            <section id="photography" class="main-section">
-                <h2>Photography</h2>
-                <p>
-                    This is where you can add your photography content later. You can add `<img>` tags, create a gallery, or write about your passion for photography.
-                    <br><br>
-                    <!-- Example: <img src="your-photo.jpg" alt="Description of photo"> -->
-                </p>
-            </section>
-
-            <!-- ADDED: Footer with credits -->
-            <footer>
-                <p>Designed & Built by Brittany Chiang && Manoj Kumar & Gemini AI.</p>
-            </footer>
-        </main>
+                         <!-- Add a placeholder for resume link -->
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center group">
+                            <div class="w-5 h-5 border border-gray-400 rounded-sm mr-4 flex-shrink-0 group-hover:bg-black"></div>
+                            <span class="text-gray-700 group-hover:text-black transition-colors duration-300">Resume</span>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
     </div>
-    
-    <!-- UPDATED: Social Links Section -->
-    <div class="fixed-social-links">
-        <ul>
-            <li><a href="https://github.com/t-manojkumar" target="_blank" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="social-icon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-            </a></li>
-            <li><a href="https://linkedin.com/in/manojkumar-t" target="_blank" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
-            </a></li>
-            <li><a href="https://www.instagram.com/manojkumar.jpg/" target="_blank" title="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-            </a></li>
-            <li><a href="https://www.behance.net/manojkumart" target="_blank" title="Behance">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon"><path d="M22.2,6.4H15.1V5.3c0-1.8,1.2-2.5,2.4-2.5c1.1,0,1.9,0.1,1.9,0.1V0.1L17.1,0C17.1,0,16.1,0,15.1,0c-3.4,0-5.1,2.1-5.1,5v1.4 H6.2v3.2h3.8v8.4h4.3v-8.4h3.4L18,6.4z M24,13.2c0-1.8-1.9-2.6-3.7-2.6c-1.8,0-3.7,0.8-3.7,2.6c0,1.8,1.9,2.6,3.7,2.6 C22.1,15.8,24,14.9,24,13.2z M18.1,13.2c0-0.8,0.7-1.2,1.5-1.2c0.8,0,1.5,0.4,1.5,1.2c0,0.8-0.7,1.2-1.5,1.2 C18.8,14.4,18.1,14,18.1,13.2z"></path></svg>
-            </a></li>
-            <li><a href="mailto:t.v.manojkumar19@gmail.com" title="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
-            </a></li>
-        </ul>
-    </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Intersection Observer for active nav link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#nav-menu a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4 // Trigger when 40% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
 </body>
 </html>
