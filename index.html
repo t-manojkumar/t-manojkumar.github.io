@@ -3,457 +3,558 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Kumar - Portfolio</title>
+
+    <!-- ✅ FIX: Descriptive, SEO-optimised title -->
+    <title>Manoj Kumar — Product Engineering Intern | MongoDB · Elasticsearch · GCP</title>
+
+    <!-- ✅ NEW: SEO Meta Tags -->
+    <meta name="description" content="Manoj Kumar — Product Engineering Intern at Adapt.io. B.Tech IT student specialising in MongoDB, Elasticsearch, GCP, and data engineering. Based in India.">
+    <meta name="keywords" content="Manoj Kumar, Portfolio, MongoDB, Elasticsearch, GCP, Data Engineering, Web Crawler, Product Engineering, IT Professional">
+    <meta name="author" content="Manoj Kumar">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ NEW: Open Graph for LinkedIn / WhatsApp / Slack previews -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://t-manojkumar.github.io/">
+    <meta property="og:title" content="Manoj Kumar — Product Engineering Intern">
+    <meta property="og:description" content="IT professional skilled in MongoDB, Elasticsearch & GCP. Currently building data pipelines and crawlers at Adapt.io.">
+    <meta property="og:image" content="https://t-manojkumar.github.io/assets/profilepic.png">
+
+    <!-- ✅ NEW: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manoj Kumar — Product Engineering Intern">
+    <meta name="twitter:description" content="IT professional skilled in MongoDB, Elasticsearch & GCP.">
+    <meta name="twitter:image" content="https://t-manojkumar.github.io/assets/profilepic.png">
+
+    <!-- ✅ NEW: Canonical URL -->
+    <link rel="canonical" href="https://t-manojkumar.github.io/">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            darkMode: 'class', // Enable class-based dark mode
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .mono-font {
-            font-family: 'Space Mono', monospace;
-        }
-        /* Easter egg animations */
+        body { font-family: 'Inter', sans-serif; }
+        .mono-font { font-family: 'Space Mono', monospace; }
+
+        /* ── Easter egg animations (preserved from original) ── */
         .easter-egg-spin { animation: spin 1s ease-in-out; }
         @keyframes spin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
+            0%   { transform: rotate(0deg) scale(1); }
+            50%  { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
         }
         .signature-pop { animation: pop 0.5s ease-in-out; }
         @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0%,100% { transform: scale(1); }
+            50%     { transform: scale(1.05); }
         }
         .glitch { animation: glitch 1s linear infinite; }
-        @keyframes glitch{
-          2%,64%{ transform: translate(2px,0) skew(0deg); }
-          4%,60%{ transform: translate(-2px,0) skew(0deg); }
-          62%{ transform: translate(0,0) skew(5deg); }
+        @keyframes glitch {
+            2%,64%  { transform: translate(2px,0) skew(0deg); }
+            4%,60%  { transform: translate(-2px,0) skew(0deg); }
+            62%     { transform: translate(0,0) skew(5deg); }
         }
-        .glitch:before, .glitch:after{
-          content: attr(data-text);
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: #f5f5f4;
+        .glitch:before,.glitch:after {
+            content: attr(data-text); position: absolute; left: 0;
+            width: 100%; height: 100%; background: #f5f5f4;
         }
-        .dark .glitch:before, .dark .glitch:after { background: #111827; }
-        .glitch:before{
-          left: 2px;
-          text-shadow: -2px 0 #4ade80;
-          clip: rect(44px, 450px, 56px, 0);
-          animation: glitch-anim 5s infinite linear alternate-reverse;
+        .dark .glitch:before,.dark .glitch:after { background: #111827; }
+        .glitch:before {
+            left: 2px; text-shadow: -2px 0 #4ade80;
+            clip: rect(44px,450px,56px,0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
         }
-        .glitch:after{
-          left: -2px;
-          text-shadow: -2px 0 #ef4444, 2px 2px #3b82f6;
-          clip: rect(85px, 450px, 90px, 0);
-          animation: glitch-anim2 5s infinite linear alternate-reverse;
+        .glitch:after {
+            left: -2px; text-shadow: -2px 0 #ef4444, 2px 2px #3b82f6;
+            clip: rect(85px,450px,90px,0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
         }
-        @keyframes glitch-anim{
-          0% { clip: rect(4px, 9999px, 3px, 0); }
-        }
-        @keyframes glitch-anim2{
-          0% { clip: rect(69px, 9999px, 93px, 0); }
-        }
-        /* Responsive fix for weather widget */
-        @media (max-width: 420px) {
-            .weather-details {
-                display: none;
-            }
-        }
+        @keyframes glitch-anim  { 0% { clip: rect(4px,9999px,3px,0); } }
+        @keyframes glitch-anim2 { 0% { clip: rect(69px,9999px,93px,0); } }
+
+        /* ✅ NEW: Skill pill hover */
+        .skill-pill { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .skill-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* ✅ NEW: #OpenToWork animated dot */
+        @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+        .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+        /* ✅ NEW: Timeline left-border line between items */
+        .tl-item { position: relative; }
+
+        @media (max-width: 420px) { .weather-details { display: none; } }
     </style>
-    <!-- EmailJS Script -->
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
+
 <body class="bg-stone-100 text-stone-800 dark:bg-gray-900 dark:text-stone-50 transition-colors duration-500 antialiased">
 
-    <!-- Top Right Corner Controls -->
+    <!-- Top-right controls -->
     <div id="top-right-controls" class="fixed top-4 right-4 flex items-center gap-4 z-10 transition-transform duration-300">
-        <div id="weather-widget" class="text-sm text-right text-gray-500 dark:text-gray-300 mono-font hidden">
-            <!-- Weather data will be injected here -->
-        </div>
-        <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
-            <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <div id="weather-widget" class="text-sm text-right text-gray-500 dark:text-gray-300 mono-font hidden"></div>
+        <button id="theme-toggle" aria-label="Toggle dark mode"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+            <svg id="theme-icon-sun"  class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
     </div>
 
     <main class="container mx-auto max-w-3xl px-8 pt-20 pb-16 lg:py-24">
-        <!-- === Header === -->
+
+        <!-- ══════════════ HEADER ══════════════ -->
         <header class="flex items-center gap-5 mb-16">
-            <div id="profile-pic-container" class="w-24 h-24 rounded-full flex items-center justify-center cursor-pointer flex-shrink-0" title="Click me a few times!">
-                 <img src="assets/profilepic.png" alt="Manoj Kumar" class="rounded-full w-24 h-24 border-4 border-white dark:border-gray-800 shadow-md">
+            <div id="profile-pic-container" title="Click me a few times!"
+                class="w-24 h-24 rounded-full flex items-center justify-center cursor-pointer flex-shrink-0">
+                <img src="assets/profilepic.png" alt="Manoj Kumar" width="96" height="96"
+                    class="rounded-full w-24 h-24 border-4 border-white dark:border-gray-800 shadow-md">
             </div>
             <div>
                 <h1 class="text-4xl font-bold">Manoj Kumar</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300">IT Professional & Tech Enthusiast</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300">#OpenToWork</p>
+                <!-- ✅ FIX: subtitle updated to reflect current role -->
+                <p class="text-lg text-gray-600 dark:text-gray-300">Product Engineering Intern &amp; IT Professional</p>
+                <!-- ✅ FIX: #OpenToWork is now a proper styled badge, not raw text -->
+                <span class="inline-flex items-center gap-1.5 mt-1 px-2.5 py-0.5 rounded-full text-xs font-semibold
+                             bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300
+                             border border-green-300 dark:border-green-700">
+                    <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                    #OpenToWork
+                </span>
             </div>
         </header>
 
-        <!-- === Content Sections === -->
-        <div class="space-y-12">
-            <!-- About Section -->
+        <div class="space-y-14">
+
+            <!-- ══════════════ ABOUT ══════════════ -->
             <section id="about" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/about</h2>
-                <div class="text-gray-700 dark:text-gray-200 leading-relaxed">
-                    <p>A detail-oriented IT professional passionate about leveraging technology to create efficient, scalable solutions. With a background in both Mechatronics and IT, I enjoy solving complex problems, from streamlining data workflows to designing robust network infrastructure.</p>
-                </div>
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/about</h2>
+                <!-- ✅ FIX: Bio now reflects current role, real tech stack, and education -->
+                <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+                    B.Tech IT student at Dr. MGR Educational and Research Institute, currently interning in Product Engineering at
+                    <strong>Adapt.io</strong>. With a background spanning Mechatronics (NTTF Diploma) and IT, I bring both hardware
+                    instincts and software skills to the table — from ERP data workflows at Flex to building web crawlers and
+                    data pipelines with <strong>MongoDB</strong>, <strong>Elasticsearch</strong>, and <strong>GCP</strong>.
+                    I enjoy solving problems where data scale, speed, and accuracy all matter.
+                </p>
             </section>
 
-            <!-- Experience Section -->
+            <!-- ══════════════ EXPERIENCE ══════════════ -->
+            <!-- ✅ NEW: Adapt.io role added with real bullet points -->
             <section id="experience" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/experience</h2>
-                <div class="w-full">
-                     <div>
-                        <h3 class="font-bold">Technician-GBS Engineer</h3>
-                        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mb-2">
-                            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            <span>Flextronics Technologies | Oct 2020 - Feb 2022</span>
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/experience</h2>
+                <div class="w-full space-y-8 pl-5 border-l-2 border-gray-200 dark:border-gray-700">
+
+                    <!-- Adapt.io -->
+                    <div class="tl-item relative">
+                        <span class="absolute -left-[1.45rem] top-1.5 w-3 h-3 rounded-full bg-blue-500 border-2 border-white dark:border-gray-900 shadow-sm ring-2 ring-blue-200 dark:ring-blue-900"></span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                            <h3 class="font-bold">Product Engineering Intern</h3>
+                            <span class="text-xs mono-font px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Current</span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm">
-                            <li>Managed lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
-                            <li>Automated ECOs, reducing processing time by 20%.</li>
-                            <li>Developed structured BOMs, achieving 99% accuracy.</li>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="https://adapt.io" target="_blank" rel="noopener noreferrer" class="hover:underline font-medium text-gray-600 dark:text-gray-300">Adapt.io</a>
+                            &nbsp;·&nbsp; Nov 2025 – Present &nbsp;·&nbsp; Coimbatore, TN
+                        </p>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-700 dark:text-gray-200">
+                            <li>Handled CRUD support requests on large-scale MongoDB databases, maintaining data integrity across production collections.</li>
+                            <li>Led API migration from Prospeo — re-mapped data schemas and validated parity between old and new endpoints.</li>
+                            <li>Built a web crawler to extract company information from public sources; persisted records to MongoDB with content-hash-based duplicate detection.</li>
+                            <li>Optimised data retrieval pipelines using MongoDB aggregation and Elasticsearch queries, improving speed and relevance for downstream product features.</li>
                         </ul>
                     </div>
+
+                    <!-- Flex -->
+                    <div class="tl-item relative">
+                        <span class="absolute -left-[1.45rem] top-1.5 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-900 shadow-sm"></span>
+                        <h3 class="font-bold mb-1">Technician — Engineering Services</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span class="font-medium text-gray-600 dark:text-gray-300">Flextronics Technologies (Flex)</span>
+                            &nbsp;·&nbsp; Oct 2020 – Feb 2022 &nbsp;·&nbsp; Chennai, TN
+                        </p>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-700 dark:text-gray-200">
+                            <li>Managed lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
+                            <li>Automated ECOs using VBScript-based validation tools, reducing processing time by 20%.</li>
+                            <li>Developed structured BOMs achieving 99% data accuracy; trained team members to improve productivity.</li>
+                        </ul>
+                    </div>
+
                 </div>
             </section>
 
-            <!-- Projects Section -->
+            <!-- ══════════════ SKILLS ══════════════ -->
+            <!-- ✅ NEW: Entire section — was completely missing from original -->
+            <section id="skills" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/skills</h2>
+                <div class="space-y-4 w-full">
+                    <div>
+                        <p class="text-xs mono-font text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Databases</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800">MongoDB</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800">Elasticsearch</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800">SQL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs mono-font text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Cloud &amp; Platforms</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Google Cloud Platform</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Oracle Agile PLM</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs mono-font text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Engineering</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Web Crawling</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">API Integration</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Data Pipelines</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">VBScript / Automation</span>
+                            <span class="skill-pill px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">IoT</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══════════════ EDUCATION ══════════════ -->
+            <!-- ✅ NEW: Entire section — was completely missing from original -->
+            <section id="education" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/education</h2>
+                <div class="w-full space-y-5">
+                    <div class="flex gap-3">
+                        <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-indigo-600 dark:text-indigo-300">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0121 21H3a12.083 12.083 0 012.84-10.422L12 14z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Bachelor of Technology — Information Technology</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Dr. MGR Educational and Research Institute &nbsp;·&nbsp; Aug 2022 – May 2025</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center text-orange-600 dark:text-orange-300">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Diploma — Mechatronics, Robotics &amp; Automation Engineering</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">NTTF (Nettur Technical Training Foundation) &nbsp;·&nbsp; Jul 2017 – Jul 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══════════════ CERTIFICATIONS ══════════════ -->
+            <!-- ✅ NEW: Entire section — was completely missing from original -->
+            <section id="certifications" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/certs</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                    <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:-translate-y-0.5 transition-transform duration-150">
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mono-font mb-0.5">Deloitte Australia</p>
+                        <p class="text-sm font-semibold">Data Analytics Job Simulation</p>
+                    </div>
+                    <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:-translate-y-0.5 transition-transform duration-150">
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mono-font mb-0.5">MongoDB University</p>
+                        <p class="text-sm font-semibold">Relational → Document Model (SQL to MongoDB)</p>
+                    </div>
+                    <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:-translate-y-0.5 transition-transform duration-150">
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mono-font mb-0.5">MongoDB University</p>
+                        <p class="text-sm font-semibold">CRUD Operations in MongoDB</p>
+                    </div>
+                    <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:-translate-y-0.5 transition-transform duration-150">
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mono-font mb-0.5">Google Cloud</p>
+                        <p class="text-sm font-semibold">Prompt Design in Vertex AI</p>
+                    </div>
+                    <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:-translate-y-0.5 transition-transform duration-150 sm:col-span-2">
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mono-font mb-0.5">McKinsey &amp; Company</p>
+                        <p class="text-sm font-semibold">McKinsey Forward Program</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══════════════ PROJECTS ══════════════ -->
+            <!-- ✅ FIX: All external links now have rel="noopener noreferrer" -->
             <section id="projects" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/projects</h2>
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/projects</h2>
                 <div class="text-gray-700 dark:text-gray-200 leading-relaxed space-y-3">
-                    <p>I enjoy building tools and systems that solve real-world problems. Some of my work includes:</p>
+                    <p>I enjoy building tools and systems that solve real-world problems. Some of my work:</p>
                     <div class="flex items-center gap-2 group">
-                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        <a href="https://github.com/t-manojkumar/MetadataApp" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Windows metadata extraction app">Windows metadata extraction app</a>
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <a href="https://github.com/t-manojkumar/MetadataApp" target="_blank" rel="noopener noreferrer"
+                           class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Windows metadata extraction app">Windows metadata extraction app</a>
                     </div>
                     <div class="flex items-center gap-2 group">
-                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                        <a href="https://github.com/t-manojkumar/IPFS-IN-IOT" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="IoT communication system using IPFS">IoT communication system using IPFS</a>
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/></svg>
+                        <a href="https://github.com/t-manojkumar/IPFS-IN-IOT" target="_blank" rel="noopener noreferrer"
+                           class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="IoT communication system using IPFS">IoT communication system using IPFS</a>
                     </div>
                     <div class="flex items-center gap-2 group">
-                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                        <a href="https://github.com/t-manojkumar/MINIPROJECT_RPI-MEDIA-CENTER" class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Raspberry Pi-based NAS">Raspberry Pi-based NAS</a>
+                        <svg class="w-4 h-4 flex-shrink-0 transition-transform group-hover:scale-125 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                        <a href="https://github.com/t-manojkumar/MINIPROJECT_RPI-MEDIA-CENTER" target="_blank" rel="noopener noreferrer"
+                           class="font-semibold underline hover:text-black dark:hover:text-white relative" data-text="Raspberry Pi-based NAS">Raspberry Pi-based NAS</a>
                     </div>
                 </div>
             </section>
 
-            <!-- Contact Section -->
+            <!-- ══════════════ CONTACT ══════════════ -->
+            <!-- ✅ FIX: rel="noopener noreferrer" on all external links -->
+            <!-- ✅ FIX: Resume now direct-downloads PDF (place assets/resume.pdf in repo) -->
             <section id="contact" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/contact</h2>
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0 pt-0.5">/contact</h2>
                 <div class="flex flex-col gap-3">
                     <div class="flex flex-wrap gap-3">
-                        <a href="mailto:t.v.manojkumar19@gmail.com" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="mailto:tv.manojkumar19@gmail.com"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             Email
                         </a>
-                        <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
-                           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             LinkedIn
                         </a>
-                        <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             GitHub
                         </a>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                        <a href="https://www.behance.net/manojkumart" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        <a href="https://www.behance.net/manojkumart" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
                             Behance
                         </a>
-                        <a href="https://www.instagram.com/manojkumar.jpg/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        <a href="https://www.instagram.com/manojkumar.jpg/" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
                             Instagram
                         </a>
-                        <a href="#" id="resume-link" class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <!--
+                            ✅ FIX: Direct PDF download — no more broken "#" href.
+                            ACTION REQUIRED: Upload your resume as assets/resume.pdf to the repo.
+                        -->
+                        <a href="assets/resume.pdf" download="Manoj_Kumar_Resume.pdf" id="resume-link"
+                           class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             Resume
                         </a>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- === Footer === -->
+        </div><!-- /space-y-14 -->
+
+        <!-- ══════════════ FOOTER ══════════════ -->
         <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <img id="signature" src="assets/sign.png" alt="Manoj Kumar Signature" class="mx-auto h-16 mb-4 dark:invert cursor-pointer">
-            <p class="text-xs text-gray-500 dark:text-gray-400 mono-font" id="copyright">&copy; <span id="year"></span> Manoj Kumar</p>
+            <img id="signature" src="assets/sign.png" alt="Manoj Kumar Signature"
+                 class="mx-auto h-16 mb-4 dark:invert cursor-pointer" loading="lazy">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mono-font" id="copyright">
+                &copy; <span id="year"></span> Manoj Kumar
+            </p>
         </footer>
     </main>
 
-    <!-- Tic-Tac-Toe Modal -->
-    <div id="game-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-20">
+    <!-- ══════════════ TIC-TAC-TOE MODAL (unchanged easter egg) ══════════════ -->
+    <div id="game-modal" role="dialog" aria-modal="true" aria-label="Tic-Tac-Toe Game"
+         class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-20">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
             <h2 class="text-2xl font-bold mb-4 text-center">Tic-Tac-Toe</h2>
             <div id="game-board" class="grid grid-cols-3 gap-2 w-64 h-64 mx-auto"></div>
-            <p id="game-status" class="text-center mt-4 font-semibold"></p>
+            <p id="game-status" class="text-center mt-4 font-semibold" aria-live="polite"></p>
             <button id="reset-game" class="block mx-auto mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Reset</button>
         </div>
     </div>
 
-    <!-- Resume Email Modal -->
-    <div id="resume-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-20">
+    <!-- ══════════════ RESUME EMAIL MODAL (kept, currently bypassed by direct download above) ══════════════ -->
+    <div id="resume-modal" role="dialog" aria-modal="true" aria-label="Get Resume"
+         class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-20">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-sm">
             <h2 class="text-2xl font-bold mb-4">Get My Resume</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Enter your email below, and I'll send you a copy of my resume.</p>
-            <form id="resume-form">
-                <input id="email-input" type="email" placeholder="your.email@example.com" required class="w-full px-3 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600">
-                <button type="submit" id="submit-resume-btn" class="w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Send Resume</button>
-                <button type="button" id="close-resume-modal" class="w-full mt-2 text-sm text-gray-500 hover:underline">Cancel</button>
-            </form>
-            <p id="resume-status" class="text-center mt-4 text-sm font-semibold"></p>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Enter your email and I'll send you a copy.</p>
+            <div id="resume-form-wrapper">
+                <input id="email-input" type="email" placeholder="your.email@example.com"
+                       autocomplete="email"
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600">
+                <!-- ✅ FIX: button type="button" — no accidental form submission -->
+                <button type="button" id="submit-resume-btn"
+                        class="w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Send Resume</button>
+                <button type="button" id="close-resume-modal"
+                        class="w-full mt-2 text-sm text-gray-500 hover:underline">Cancel</button>
+            </div>
+            <p id="resume-status" class="text-center mt-4 text-sm font-semibold" aria-live="polite"></p>
         </div>
     </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // === EmailJS Initialization ===
-        (function(){
-            emailjs.init("arpfggQB56Fi_vrtB"); 
-        })();
 
-        // === Theme Toggling Logic ===
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('theme-icon-sun');
+        // ── EmailJS ────────────────────────────────────────────────────────────
+        (function(){ emailjs.init("arpfggQB56Fi_vrtB"); })();
+
+        // ── Theme toggle ───────────────────────────────────────────────────────
+        const themeBtn = document.getElementById('theme-toggle');
+        const sunIcon  = document.getElementById('theme-icon-sun');
         const moonIcon = document.getElementById('theme-icon-moon');
 
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            sunIcon.classList.remove('hidden');
-            moonIcon.classList.add('hidden');
-        }
+        const applyTheme = (dark) => {
+            document.documentElement.classList.toggle('dark', dark);
+            sunIcon.classList.toggle('hidden', dark);
+            moonIcon.classList.toggle('hidden', !dark);
+        };
+        const savedTheme = localStorage.getItem('theme');
+        applyTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
 
-        themeToggleBtn.addEventListener('click', () => {
+        themeBtn.addEventListener('click', () => {
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             sunIcon.classList.toggle('hidden', isDark);
             moonIcon.classList.toggle('hidden', !isDark);
         });
-        
-        // === Easter Egg 1: Profile Pic Spin ===
+
+        // ── Easter Egg 1: Profile pic spin ────────────────────────────────────
         const profilePic = document.getElementById('profile-pic-container');
-        let profileClickCount = 0;
+        let pClicks = 0;
         profilePic.addEventListener('click', () => {
-            profileClickCount++;
-            if (profileClickCount >= 3) {
+            if (++pClicks >= 3) {
                 profilePic.classList.add('easter-egg-spin');
-                profileClickCount = 0;
+                pClicks = 0;
                 setTimeout(() => profilePic.classList.remove('easter-egg-spin'), 1000);
             }
         });
 
-        // === Easter Egg 2: Interactive Signature ===
+        // ── Easter Egg 2: Signature pop ───────────────────────────────────────
+        // ✅ FIX: Removed the broken empty base64 WAV audio
         const signature = document.getElementById('signature');
-        const signatureSound = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA");
         signature.addEventListener('click', () => {
             signature.classList.add('signature-pop');
-            signatureSound.currentTime = 0;
-            signatureSound.play();
             setTimeout(() => signature.classList.remove('signature-pop'), 500);
         });
 
-        // === Easter Egg 3: Text Glitch Effect ===
+        // ── Easter Egg 3: Glitch on hover ─────────────────────────────────────
         document.querySelectorAll('[data-text]').forEach(el => {
             el.addEventListener('mouseover', () => el.classList.add('glitch'));
-            el.addEventListener('mouseout', () => el.classList.remove('glitch'));
+            el.addEventListener('mouseout',  () => el.classList.remove('glitch'));
         });
 
-        // === Easter Egg 4: Secret Game (Tic-Tac-Toe) ===
-        const copyright = document.getElementById('copyright');
-        const gameModal = document.getElementById('game-modal');
-        const gameBoard = document.getElementById('game-board');
+        // ── Easter Egg 4: Tic-Tac-Toe (triple-click copyright) ────────────────
+        const copyright  = document.getElementById('copyright');
+        const gameModal  = document.getElementById('game-modal');
+        const gameBoard  = document.getElementById('game-board');
         const gameStatus = document.getElementById('game-status');
-        const resetGameBtn = document.getElementById('reset-game');
-        let gameClickCount = 0;
-        let board, currentPlayer, isGameActive;
+        const resetBtn   = document.getElementById('reset-game');
+        let gClicks = 0, board, currentPlayer, isGameActive;
 
         const startGame = () => {
-            board = Array(9).fill(null);
-            currentPlayer = 'X';
-            isGameActive = true;
-            gameStatus.textContent = `Player ${currentPlayer}'s turn`;
+            board = Array(9).fill(null); currentPlayer = 'X'; isGameActive = true;
+            gameStatus.textContent = "Player X's turn";
             gameBoard.innerHTML = '';
             for (let i = 0; i < 9; i++) {
                 const cell = document.createElement('div');
-                cell.classList.add('border', 'border-gray-400', 'flex', 'items-center', 'justify-center', 'text-4xl', 'font-bold', 'cursor-pointer', 'hover:bg-gray-200', 'dark:hover:bg-gray-700');
+                cell.classList.add('border','border-gray-400','flex','items-center','justify-center',
+                                   'text-4xl','font-bold','cursor-pointer',
+                                   'hover:bg-gray-200','dark:hover:bg-gray-700');
                 cell.dataset.index = i;
-                cell.addEventListener('click', handleCellClick);
+                cell.addEventListener('click', handleCell);
                 gameBoard.appendChild(cell);
             }
         };
-
-        const handleCellClick = (e) => {
-            const index = e.target.dataset.index;
-            if (board[index] || !isGameActive) return;
-            board[index] = currentPlayer;
+        const handleCell = (e) => {
+            const i = e.target.dataset.index;
+            if (board[i] || !isGameActive) return;
+            board[i] = currentPlayer;
             e.target.textContent = currentPlayer;
-            checkWinner();
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            if(isGameActive) gameStatus.textContent = `Player ${currentPlayer}'s turn`;
-        };
-        
-        const checkWinner = () => {
-            const winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            for (let combo of winningCombos) {
-                const [a, b, c] = combo;
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for (const [a,b,c] of wins) {
                 if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                    isGameActive = false;
-                    gameStatus.textContent = `Player ${board[a]} wins!`;
-                    return;
+                    isGameActive = false; gameStatus.textContent = `Player ${board[a]} wins! 🎉`; return;
                 }
             }
-            if (!board.includes(null)) {
-                isGameActive = false;
-                gameStatus.textContent = "It's a draw!";
-            }
+            if (!board.includes(null)) { isGameActive = false; gameStatus.textContent = "It's a draw!"; return; }
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            gameStatus.textContent = `Player ${currentPlayer}'s turn`;
         };
-
         copyright.addEventListener('click', () => {
-            gameClickCount++;
-            if (gameClickCount >= 3) {
-                gameModal.classList.remove('hidden');
-                gameModal.classList.add('flex');
-                startGame();
-                gameClickCount = 0;
+            if (++gClicks >= 3) {
+                gameModal.classList.remove('hidden'); gameModal.classList.add('flex');
+                startGame(); gClicks = 0;
             }
         });
-        
-        resetGameBtn.addEventListener('click', startGame);
+        resetBtn.addEventListener('click', startGame);
         gameModal.addEventListener('click', (e) => {
-            if (e.target === gameModal) {
-                gameModal.classList.add('hidden');
-                gameModal.classList.remove('flex');
-            }
+            if (e.target === gameModal) { gameModal.classList.add('hidden'); gameModal.classList.remove('flex'); }
         });
 
-        // === Easter Egg 5: Weather Widget ===
+        // ── Easter Egg 5: Weather widget ──────────────────────────────────────
         const weatherWidget = document.getElementById('weather-widget');
-        const getWeatherEmoji = (code) => {
-            if (code === 0) return '☀️';
-            if (code <= 3) return '☁️';
-            if (code <= 48) return '🌫️';
-            if (code <= 67) return '🌧️';
-            if (code <= 77) return '❄️';
-            if (code <= 99) return '⛈️';
-            return '🌍';
-        };
-
+        const wEmoji = c => c===0?'☀️':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'❄️':c<=99?'⛈️':'🌍';
         fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-                const { latitude, longitude, city } = data;
-                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`;
-                return fetch(weatherUrl).then(res => res.json()).then(weatherData => ({...weatherData, city}));
-            })
-            .then(data => {
-                const { current, city } = data;
-                const emoji = getWeatherEmoji(current.weather_code);
+            .then(r => r.json())
+            .then(({ latitude, longitude, city }) =>
+                fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`)
+                .then(r => r.json()).then(w => ({ ...w, city }))
+            )
+            .then(({ current, city }) => {
                 weatherWidget.innerHTML = `
-                    <div>${city} ${emoji}</div>
-                    <div class="weather-details">${current.temperature_2m}°C | ${current.relative_humidity_2m}% | ${current.wind_speed_10m}km/h</div>
-                `;
+                    <div>${city} ${wEmoji(current.weather_code)}</div>
+                    <div class="weather-details">${current.temperature_2m}°C · ${current.relative_humidity_2m}% · ${current.wind_speed_10m}km/h</div>`;
                 weatherWidget.classList.remove('hidden');
             })
-            .catch(() => {
-                weatherWidget.innerHTML = `<div>Weather data unavailable</div>`;
-                weatherWidget.classList.remove('hidden');
-            });
+            .catch(() => {});   // silent fail — weather is decorative
 
-        // === Resume Modal Logic ===
-        const resumeLink = document.getElementById('resume-link');
-        const resumeModal = document.getElementById('resume-modal');
-        const resumeForm = document.getElementById('resume-form');
-        const resumeStatus = document.getElementById('resume-status');
-        const closeResumeModalBtn = document.getElementById('close-resume-modal');
+        // ── Resume email modal (kept for future use) ──────────────────────────
+        const resumeModal    = document.getElementById('resume-modal');
+        const resumeStatus   = document.getElementById('resume-status');
+        const closeResumeBtn = document.getElementById('close-resume-modal');
+        const submitResumeBtn= document.getElementById('submit-resume-btn');
+        const emailInput     = document.getElementById('email-input');
 
-        resumeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            resumeModal.classList.remove('hidden');
-            resumeModal.classList.add('flex');
-        });
+        const closeModal = () => {
+            resumeModal.classList.add('hidden'); resumeModal.classList.remove('flex');
+        };
+        closeResumeBtn.addEventListener('click', closeModal);
+        resumeModal.addEventListener('click', e => { if (e.target === resumeModal) closeModal(); });
 
-        closeResumeModalBtn.addEventListener('click', () => {
-            resumeModal.classList.add('hidden');
-            resumeModal.classList.remove('flex');
-        });
-
-        resumeModal.addEventListener('click', (e) => {
-            if (e.target === resumeModal) {
-                resumeModal.classList.add('hidden');
-                resumeModal.classList.remove('flex');
+        // ✅ FIX: Manual validation replaces <form> submit to avoid page reload & edge-case bugs
+        submitResumeBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                resumeStatus.textContent = 'Please enter a valid email.';
+                resumeStatus.className = 'text-center mt-4 text-sm font-semibold text-red-500';
+                return;
             }
-        });
-
-        resumeForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const emailInput = document.getElementById('email-input');
-            const submitBtn = document.getElementById('submit-resume-btn');
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            const templateParams = {
-                to_email: emailInput.value
-            };
-
-            emailjs.send('service_dvnhhu5', 'template_a6xm6pb', templateParams)
-                .then((response) => {
-                   resumeStatus.textContent = 'Success! Check your inbox.';
-                   resumeStatus.classList.add('text-green-500');
-                   setTimeout(() => {
-                        resumeModal.classList.add('hidden');
-                        resumeModal.classList.remove('flex');
-                        resumeStatus.textContent = '';
-                        resumeStatus.classList.remove('text-green-500');
-                        emailInput.value = '';
-                   }, 3000);
-                }, (error) => {
-                   resumeStatus.textContent = 'Failed to send. Please try again.';
-                   resumeStatus.classList.add('text-red-500');
+            submitResumeBtn.textContent = 'Sending…';
+            submitResumeBtn.disabled = true;
+            emailjs.send('service_dvnhhu5', 'template_a6xm6pb', { to_email: email })
+                .then(() => {
+                    resumeStatus.textContent = 'Sent! Check your inbox.';
+                    resumeStatus.className = 'text-center mt-4 text-sm font-semibold text-green-500';
+                    setTimeout(() => { closeModal(); resumeStatus.textContent = ''; emailInput.value = ''; }, 3000);
                 })
-                .finally(() => {
-                    submitBtn.textContent = 'Send Resume';
-                    submitBtn.disabled = false;
-                });
+                .catch(() => {
+                    resumeStatus.textContent = 'Failed to send. Please try again.';
+                    resumeStatus.className = 'text-center mt-4 text-sm font-semibold text-red-500';
+                })
+                .finally(() => { submitResumeBtn.textContent = 'Send Resume'; submitResumeBtn.disabled = false; });
         });
 
-        // Set current year in footer
+        // ── Footer year ───────────────────────────────────────────────────────
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // === Mobile Scroll Logic for Top Right Controls ===
-        let lastScrollTop = 0;
+        // ── Mobile: hide controls on scroll down ──────────────────────────────
+        let lastST = 0;
         const controls = document.getElementById('top-right-controls');
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth >= 768) return;
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            controls.style.transform = st > lastST ? 'translateY(-100px)' : 'translateY(0)';
+            lastST = Math.max(0, st);
+        }, { passive: true });
 
-        window.addEventListener("scroll", function() {
-            if (window.innerWidth < 768) { // Applies only to screens smaller than 768px
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling Down
-                    controls.style.transform = "translateY(-100px)";
-                } else {
-                    // Scrolling Up
-                    controls.style.transform = "translateY(0)";
-                }
-                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-            }
-        }, false);
     });
     </script>
 </body>
