@@ -366,6 +366,23 @@
       transform: translateY(0);
     }
 
+    .signature-img.replay {
+      animation: sign-reveal 1.8s ease both;
+    }
+
+    @keyframes sign-reveal {
+      0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
@@ -562,6 +579,7 @@
       const themeToggle = document.getElementById('theme-toggle');
       const portrait = document.getElementById('portrait');
       const signatureWrap = document.querySelector('.signature-wrap');
+      const signatureImg = document.querySelector('.signature-img');
       const toast = document.getElementById('toast');
 
       let clickCount = 0;
@@ -592,15 +610,20 @@
         showToast('Theme: ' + next);
       });
 
+      function replaySignature() {
+        signatureWrap.classList.add('draw');
+        signatureImg.classList.remove('replay');
+        void signatureImg.offsetWidth;
+        signatureImg.classList.add('replay');
+      }
+
       portrait.addEventListener('click', () => {
         clickCount += 1;
         portrait.style.transform = 'scale(1.015)';
         setTimeout(() => { portrait.style.transform = ''; }, 180);
         if (clickCount === 4) {
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-          signatureWrap.classList.remove('draw');
-          void signatureWrap.offsetWidth;
-          signatureWrap.classList.add('draw');
+          replaySignature();
           showToast('Signature unlocked. Press S to replay.');
           clickCount = 0;
         }
@@ -609,7 +632,7 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            signatureWrap.classList.add('draw');
+            replaySignature();
           }
         });
       }, { threshold: 0.45 });
@@ -628,9 +651,7 @@
         }
 
         if (key === 's') {
-          signatureWrap.classList.remove('draw');
-          void signatureWrap.offsetWidth;
-          signatureWrap.classList.add('draw');
+          replaySignature();
           showToast('Signature replayed.');
         }
       });
