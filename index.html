@@ -1,661 +1,208 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manoj Kumar | One-Page Portfolio</title>
-  <meta name="description" content="Manoj Kumar - Product Engineering Intern building data products with MongoDB, Elasticsearch, and GCP.">
-  <meta name="author" content="Manoj Kumar">
-  <meta name="theme-color" content="#e7edf6">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Manoj Kumar | One-Page Portfolio">
-  <meta property="og:description" content="Minimal one-page portfolio by Manoj Kumar.">
-  <meta property="og:url" content="https://t-manojkumar.github.io/">
-  <meta property="og:image" content="https://t-manojkumar.github.io/assets/profilepic.png">
-  <link rel="canonical" href="https://t-manojkumar.github.io/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #eef2f7;
-      --bg-2: #e4ebf4;
-      --text: #101b2b;
-      --muted: #50627a;
-      --line: rgba(118, 140, 170, 0.28);
-      --card: rgba(255, 255, 255, 0.55);
-      --card-strong: rgba(255, 255, 255, 0.72);
-      --accent: #0a84ff;
-      --accent-2: #16a6b4;
-      --shadow: 0 20px 48px rgba(16, 27, 43, 0.14);
-      --ring: 0 0 0 3px rgba(10, 132, 255, 0.25);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoj Kumar - Portfolio</title>
+    <meta name="description" content="Manoj Kumar - Product Engineering Intern portfolio.">
+    <meta name="author" content="Manoj Kumar">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://t-manojkumar.github.io/">
+    <meta property="og:title" content="Manoj Kumar - Portfolio">
+    <meta property="og:description" content="One-page portfolio of Manoj Kumar.">
+    <meta property="og:image" content="https://t-manojkumar.github.io/assets/profilepic.png">
+    <link rel="canonical" href="https://t-manojkumar.github.io/">
 
-    [data-theme="dark"] {
-      --bg: #0d1725;
-      --bg-2: #132133;
-      --text: #eaf0ff;
-      --muted: #a7b8d4;
-      --line: rgba(142, 171, 208, 0.26);
-      --card: rgba(17, 30, 47, 0.6);
-      --card-strong: rgba(17, 30, 47, 0.8);
-      --accent: #72b6ff;
-      --accent-2: #6ed4c3;
-      --shadow: 0 20px 48px rgba(2, 8, 18, 0.46);
-      --ring: 0 0 0 3px rgba(114, 182, 255, 0.28);
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-font { font-family: 'Space Mono', monospace; }
 
-    * { box-sizing: border-box; }
+        /* Single animation: signature reveal */
+        .signature-animate {
+            opacity: 0;
+            transform: translateY(6px);
+            clip-path: inset(0 100% 0 0);
+        }
+        .signature-animate.draw {
+            animation: signature-reveal 1.2s ease forwards;
+        }
+        @keyframes signature-reveal {
+            from { opacity: 0; transform: translateY(6px); clip-path: inset(0 100% 0 0); }
+            to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+        }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: "Manrope", "Segoe UI", sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      background:
-        radial-gradient(1000px 580px at 4% -15%, rgba(114, 182, 255, 0.35), transparent 60%),
-        radial-gradient(760px 460px at 90% 10%, rgba(22, 166, 180, 0.24), transparent 62%),
-        linear-gradient(160deg, var(--bg), var(--bg-2));
-      overflow-x: hidden;
-    }
-
-    .grain::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle at 20% 35%, #fff 0.4px, transparent 0.5px);
-      background-size: 3px 3px;
-      opacity: 0.06;
-      z-index: 0;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: min(1100px, 93vw);
-      margin: 18px auto 30px;
-    }
-
-    .glass {
-      border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px) saturate(150%);
-      -webkit-backdrop-filter: blur(16px) saturate(150%);
-      border-radius: 20px;
-    }
-
-    .mono {
-      font-family: "JetBrains Mono", Consolas, monospace;
-      color: var(--muted);
-      font-size: 0.84rem;
-      letter-spacing: 0.02em;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 10px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #1ecf76;
-      box-shadow: 0 0 0 0 rgba(30, 207, 118, 0.6);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(30, 207, 118, 0.6); }
-      80% { box-shadow: 0 0 0 9px rgba(30, 207, 118, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(30, 207, 118, 0); }
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    a,
-    button,
-    .pill {
-      font: inherit;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.4);
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: transform 0.18s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    [data-theme="dark"] a,
-    [data-theme="dark"] button,
-    [data-theme="dark"] .pill {
-      background: rgba(13, 25, 40, 0.58);
-    }
-
-    a:hover,
-    button:hover,
-    .pill:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(9, 17, 31, 0.14);
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: none;
-      box-shadow: var(--ring);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 18px;
-      padding: clamp(18px, 3.6vw, 30px);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      margin: 6px 0 10px;
-      font-size: clamp(2rem, 4.8vw, 4.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .lead {
-      margin: 0 0 18px;
-      color: var(--muted);
-      max-width: 60ch;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .primary {
-      color: #fff;
-      border-color: transparent;
-      background: linear-gradient(120deg, var(--accent), #4ea5ff);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .stat {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.34);
-    }
-
-    [data-theme="dark"] .stat {
-      background: rgba(16, 29, 46, 0.62);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.2rem;
-      line-height: 1.15;
-      margin-bottom: 3px;
-    }
-
-    .portrait {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-      background: linear-gradient(140deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.2));
-      cursor: pointer;
-    }
-
-    .portrait img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .portrait .tag {
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
-      padding: 6px 9px;
-      border-radius: 11px;
-      font-size: 0.78rem;
-      color: #f2f8ff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(13, 24, 40, 0.62);
-      backdrop-filter: blur(10px);
-    }
-
-    .section {
-      padding: clamp(16px, 3vw, 24px);
-      margin-bottom: 14px;
-    }
-
-    .heading {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: rgba(255, 255, 255, 0.34);
-    }
-
-    [data-theme="dark"] .card {
-      background: rgba(16, 29, 46, 0.54);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 11px;
-    }
-
-    .timeline article {
-      border-left: 2px solid var(--line);
-      padding-left: 11px;
-    }
-
-    .timeline b {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .github-map {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--card-strong);
-      overflow: auto;
-      padding: 10px;
-    }
-
-    .github-map img {
-      width: 100%;
-      min-width: 720px;
-      max-width: none;
-      display: block;
-      border-radius: 8px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .signature-wrap {
-      text-align: center;
-      padding-top: 12px;
-    }
-
-    .signature-frame {
-      width: min(420px, 92%);
-      margin: 14px auto 0;
-      padding: 14px 14px 8px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.34);
-      overflow: hidden;
-    }
-
-    [data-theme="dark"] .signature-frame {
-      background: rgba(16, 29, 46, 0.54);
-    }
-
-    .signature-img {
-      width: 100%;
-      display: block;
-      transform: translateY(12px);
-      opacity: 0;
-      clip-path: inset(0 100% 0 0);
-      filter: drop-shadow(0 8px 16px rgba(12, 23, 39, 0.14));
-      transition: clip-path 1.8s ease, opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .signature-wrap.draw .signature-img {
-      clip-path: inset(0 0 0 0);
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .signature-img.replay {
-      animation: sign-reveal 1.8s ease both;
-    }
-
-    @keyframes sign-reveal {
-      0% {
-        clip-path: inset(0 100% 0 0);
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      100% {
-        clip-path: inset(0 0 0 0);
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 14px;
-    }
-
-    #toast {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%) translateY(120%);
-      background: rgba(12, 20, 35, 0.84);
-      color: #f4f8ff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 8px 12px;
-      font-size: 0.82rem;
-      z-index: 40;
-      transition: transform 0.26s ease;
-    }
-
-    #toast.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    @media (max-width: 1000px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .portrait {
-        max-width: 340px;
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .page {
-        width: min(1100px, 95vw);
-      }
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .stats,
-      .split,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      .github-map img {
-        min-width: 560px;
-      }
-    }
-  </style>
+        @media (max-width: 420px) {
+            .github-map-wrap { overflow-x: auto; }
+        }
+    </style>
 </head>
-<body class="grain" data-theme="light">
-  <div class="page">
-    <header class="topbar glass">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Manoj Kumar</span>
-        <span class="mono">Open to work</span>
-      </div>
-      <nav aria-label="main links">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#github">GitHub</a>
-        <a href="#contact">Contact</a>
-        <button id="theme-toggle" type="button">Theme</button>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero glass" id="about">
-        <div>
-          <p class="mono">Product Engineering Intern at Adapt.io</p>
-          <h1>Minimal systems. Maximum clarity.</h1>
-          <p class="lead">
-            I build practical data products and APIs using MongoDB, Elasticsearch, and GCP.
-            With a blend of Mechatronics and IT background, I focus on scalable pipelines,
-            clean data flow, and product-ready engineering.
-          </p>
-          <div class="hero-actions">
-            <a class="primary" href="assets/ManojKumar_RESUME.pdf" target="_blank" rel="noopener">Resume</a>
-            <a href="mailto:t.v.manojkumar19@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/manojkumar-t" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><strong>1M+</strong><span class="mono">PLM records handled</span></div>
-            <div class="stat"><strong>20%</strong><span class="mono">ECO speed improvement</span></div>
-            <div class="stat"><strong>Now</strong><span class="mono">Adapt.io internship</span></div>
-          </div>
-        </div>
-        <figure class="portrait" id="portrait" title="Click this card 4 times">
-          <img src="assets/profilepic.png" alt="Manoj Kumar portrait">
-          <figcaption class="tag">Secret mode: click x4</figcaption>
-        </figure>
-      </section>
+<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 dark:text-stone-50 transition-colors duration-300 antialiased">
 
-      <section class="section glass" id="work">
-        <h2 class="heading">Experience & Projects</h2>
-        <div class="split">
-          <div class="card">
-            <h3>Experience</h3>
-            <div class="timeline">
-              <article>
-                <b>Product Engineering Intern - Adapt.io</b>
-                <span class="mono">Nov 2025 - Present</span>
-                <div>CRUD operations in large MongoDB datasets, API migration, crawler development, and search optimization.</div>
-              </article>
-              <article>
-                <b>Technician - Flex</b>
-                <span class="mono">Oct 2020 - Feb 2022</span>
-                <div>Managed Oracle Agile PLM lifecycle data, VBScript automation, and BOM quality improvements.</div>
-              </article>
+    <div id="top-right-controls" class="fixed top-4 right-4 flex items-center gap-4 z-10">
+        <button id="theme-toggle" aria-label="Toggle dark mode"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+            <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+    </div>
+
+    <main class="container mx-auto max-w-3xl px-8 pt-20 pb-16 lg:py-24">
+        <header class="flex items-center gap-5 mb-16">
+            <div class="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0">
+                <img src="assets/profilepic.png" alt="Manoj Kumar" width="96" height="96"
+                    class="rounded-full w-24 h-24 border-4 border-white dark:border-gray-800 shadow-md">
             </div>
-          </div>
-          <div class="card">
-            <h3>Skills</h3>
-            <div class="chips">
-              <span class="pill">MongoDB</span>
-              <span class="pill">Elasticsearch</span>
-              <span class="pill">Google Cloud</span>
-              <span class="pill">SQL</span>
-              <span class="pill">API Integration</span>
-              <span class="pill">Web Crawling</span>
-              <span class="pill">Data Pipelines</span>
-              <span class="pill">VBScript</span>
+            <div>
+                <h1 class="text-4xl font-bold">Manoj Kumar</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300">Product Engineering Intern</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">MongoDB · Elasticsearch · GCP</p>
             </div>
-            <h3 style="margin-top:14px;">Education</h3>
-            <div><b>B.Tech IT</b> - Dr. MGR Educational and Research Institute</div>
-            <div class="mono">Aug 2022 - May 2025</div>
-            <div style="margin-top:8px;"><b>Diploma Mechatronics</b> - NTTF</div>
-            <div class="mono">Jul 2017 - Jul 2020</div>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      <section class="section glass" id="github">
-        <h2 class="heading">GitHub Contribution Map</h2>
-        <p style="margin-top:0;">Live activity map for <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener">@t-manojkumar</a>.</p>
-        <div class="github-map" aria-label="GitHub contribution heatmap">
-          <img src="https://ghchart.rshah.org/0a84ff/t-manojkumar" alt="GitHub contribution chart for t-manojkumar" loading="lazy">
-        </div>
-      </section>
+        <div class="space-y-12">
+            <section id="about" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/about</h2>
+                <div class="text-gray-700 dark:text-gray-200 leading-relaxed">
+                    <p>
+                        IT professional with a Mechatronics + IT background, currently working as a Product Engineering Intern at Adapt.io.
+                        I focus on building reliable data workflows, API integrations, and scalable search pipelines.
+                    </p>
+                </div>
+            </section>
 
-      <section class="section glass" id="contact">
-        <h2 class="heading">Contact</h2>
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Let's build something useful</h3>
-            <p style="margin-top:0;">Open to product/data engineering roles.</p>
-            <p class="mono">Email: <a href="mailto:t.v.manojkumar19@gmail.com">t.v.manojkumar19@gmail.com</a></p>
-            <p class="mono">LinkedIn: <a href="https://www.linkedin.com/in/manojkumar-t" target="_blank" rel="noopener">/in/manojkumar-t</a></p>
-          </div>
-          <div class="card">
-            <h3>Hidden easter eggs</h3>
-            <ul>
-              <li>Press <b>G</b> for glass boost.</li>
-              <li>Press <b>S</b> to replay signature animation.</li>
-              <li>Click profile card 4 times for a surprise.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+            <section id="experience" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/experience</h2>
+                <div class="w-full space-y-6">
+                    <div>
+                        <h3 class="font-bold">Product Engineering Intern</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Adapt.io · Nov 2025 - Present</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                            <li>Handled MongoDB CRUD operations in production-scale datasets.</li>
+                            <li>Led API migration workflows and schema mapping updates.</li>
+                            <li>Built crawler-based data pipelines with duplicate detection logic.</li>
+                            <li>Improved retrieval quality using Elasticsearch query tuning.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Technician - Engineering Services</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Flex · Oct 2020 - Feb 2022</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                            <li>Managed lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
+                            <li>Automated ECO validation flows using VBScript.</li>
+                            <li>Improved BOM quality and process consistency.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-      <section class="section glass signature-wrap" id="signature">
-        <h2 class="heading" style="margin-bottom:4px;">Signature</h2>
-        <p style="margin-top:0;">Thank you for visiting.</p>
-        <div class="signature-frame">
-          <img class="signature-img" src="assets/sign.png" alt="Manoj Kumar signature" loading="lazy">
+            <section id="projects" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/projects</h2>
+                <div class="w-full text-gray-700 dark:text-gray-200 leading-relaxed space-y-3">
+                    <p>Selected work and skill areas:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Company data crawler and enrichment pipeline.</li>
+                        <li>Search retrieval optimization with Elasticsearch.</li>
+                        <li>Metadata extraction and automation tools.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">MongoDB</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Elasticsearch</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">GCP</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Data Pipelines</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">API Integration</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="github" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/github</h2>
+                <div class="w-full">
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        Contribution map for <a class="underline" href="https://github.com/t-manojkumar" target="_blank" rel="noopener">@t-manojkumar</a>
+                    </p>
+                    <div class="github-map-wrap border border-gray-300 dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-800">
+                        <img src="https://ghchart.rshah.org/0a66ff/t-manojkumar"
+                             alt="GitHub contribution chart for t-manojkumar"
+                             class="w-full min-w-[680px]" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/contact</h2>
+                <div class="flex flex-wrap gap-3">
+                    <a href="mailto:t.v.manojkumar19@gmail.com" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">Email</a>
+                    <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">LinkedIn</a>
+                    <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">GitHub</a>
+                    <a href="assets/ManojKumar_RESUME.pdf" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">Resume</a>
+                </div>
+            </section>
         </div>
-      </section>
+
+        <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700" id="signature-section">
+            <img id="signature" src="assets/sign.png" alt="Manoj Kumar Signature"
+                 class="signature-animate mx-auto h-16 mb-4 dark:invert cursor-pointer" loading="lazy">
+            <button id="replay-signature" type="button"
+                    class="mb-4 text-xs px-2.5 py-1 border border-gray-300 dark:border-gray-600 rounded-md hover:border-black dark:hover:border-white transition-colors">
+                Replay Signature
+            </button>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mono-font">
+                &copy; <span id="year"></span> Manoj Kumar
+            </p>
+        </footer>
     </main>
 
-    <footer class="footer glass">
-      <span class="mono">Designed and engineered by Manoj Kumar.</span>
-      <span class="mono">Updated: March 4, 2026</span>
-    </footer>
-  </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeBtn = document.getElementById('theme-toggle');
+        const sunIcon  = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
 
-  <div id="toast" role="status" aria-live="polite"></div>
+        const applyTheme = (dark) => {
+            document.documentElement.classList.toggle('dark', dark);
+            sunIcon.classList.toggle('hidden', dark);
+            moonIcon.classList.toggle('hidden', !dark);
+        };
 
-  <script>
-    (function () {
-      const root = document.body;
-      const themeToggle = document.getElementById('theme-toggle');
-      const portrait = document.getElementById('portrait');
-      const signatureWrap = document.querySelector('.signature-wrap');
-      const signatureImg = document.querySelector('.signature-img');
-      const toast = document.getElementById('toast');
+        const savedTheme = localStorage.getItem('theme');
+        applyTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
 
-      let clickCount = 0;
-      let glassBoost = false;
-
-      function showToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(showToast.timer);
-        showToast.timer = setTimeout(() => toast.classList.remove('show'), 2100);
-      }
-
-      function setTheme(theme) {
-        root.setAttribute('data-theme', theme);
-        localStorage.setItem('portfolio-theme', theme);
-      }
-
-      const savedTheme = localStorage.getItem('portfolio-theme');
-      if (savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setTheme('dark');
-      } else {
-        setTheme('light');
-      }
-
-      themeToggle.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        setTheme(next);
-        showToast('Theme: ' + next);
-      });
-
-      function replaySignature() {
-        signatureWrap.classList.add('draw');
-        signatureImg.classList.remove('replay');
-        void signatureImg.offsetWidth;
-        signatureImg.classList.add('replay');
-      }
-
-      portrait.addEventListener('click', () => {
-        clickCount += 1;
-        portrait.style.transform = 'scale(1.015)';
-        setTimeout(() => { portrait.style.transform = ''; }, 180);
-        if (clickCount === 4) {
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-          replaySignature();
-          showToast('Signature unlocked. Press S to replay.');
-          clickCount = 0;
-        }
-      });
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            replaySignature();
-          }
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            sunIcon.classList.toggle('hidden', isDark);
+            moonIcon.classList.toggle('hidden', !isDark);
         });
-      }, { threshold: 0.45 });
-      observer.observe(signatureWrap);
 
-      document.addEventListener('keydown', (e) => {
-        const key = e.key.toLowerCase();
+        const signature = document.getElementById('signature');
+        const signatureSection = document.getElementById('signature-section');
+        const replayButton = document.getElementById('replay-signature');
 
-        if (key === 'g') {
-          glassBoost = !glassBoost;
-          document.querySelectorAll('.glass').forEach((el) => {
-            el.style.backdropFilter = glassBoost ? 'blur(24px) saturate(180%)' : '';
-            el.style.webkitBackdropFilter = glassBoost ? 'blur(24px) saturate(180%)' : '';
-          });
-          showToast(glassBoost ? 'Glass boost: on' : 'Glass boost: off');
-        }
+        const replaySignature = () => {
+            signature.classList.remove('draw');
+            void signature.offsetWidth;
+            signature.classList.add('draw');
+        };
 
-        if (key === 's') {
-          replaySignature();
-          showToast('Signature replayed.');
-        }
-      });
-    })();
-  </script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) replaySignature();
+            });
+        }, { threshold: 0.5 });
+        observer.observe(signatureSection);
+
+        replayButton.addEventListener('click', replaySignature);
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    });
+    </script>
 </body>
 </html>
