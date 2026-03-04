@@ -1,50 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found - Manoj Kumar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .mono-font {
-            font-family: 'Space Mono', monospace;
-        }
-        .rocket-animation {
-            animation: fly 15s linear infinite;
-        }
-        @keyframes fly {
-            0% { transform: translate(-10vw, 10vh) rotate(-15deg); }
-            50% { transform: translate(110vw, -20vh) rotate(5deg); }
-            51% { transform: translate(110vw, -20vh) rotate(165deg); }
-            100% { transform: translate(-10vw, 30vh) rotate(195deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | Manoj Kumar</title>
+  <meta name="description" content="Page not found - Manoj Kumar portfolio.">
+  <meta name="theme-color" content="#e7edf6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e9eef6;
+      --bg2: #dfe7f2;
+      --text: #0d1a2b;
+      --muted: #445368;
+      --card: rgba(255, 255, 255, 0.58);
+      --card-border: rgba(255, 255, 255, 0.72);
+      --shadow: 0 16px 42px rgba(22, 37, 64, 0.16);
+      --accent: #0a84ff;
+      --accent-2: #2aa7a1;
+      --ring: 0 0 0 3px rgba(10, 132, 255, 0.22);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f1826;
+      --bg2: #132238;
+      --text: #e9f0ff;
+      --muted: #a6b7cf;
+      --card: rgba(18, 31, 49, 0.62);
+      --card-border: rgba(138, 164, 197, 0.28);
+      --shadow: 0 16px 44px rgba(3, 8, 18, 0.52);
+      --accent: #73b5ff;
+      --accent-2: #73d2bf;
+      --ring: 0 0 0 3px rgba(115, 181, 255, 0.3);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Sora", "Segoe UI", Tahoma, sans-serif;
+      color: var(--text);
+      overflow: hidden;
+      background:
+        radial-gradient(980px 580px at 10% -10%, rgba(115, 181, 255, 0.33), transparent 60%),
+        radial-gradient(860px 500px at 95% 15%, rgba(42, 167, 161, 0.2), transparent 62%),
+        linear-gradient(160deg, var(--bg), var(--bg2));
+    }
+
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.065;
+      background-image: radial-gradient(circle at 20% 35%, #fff 0.4px, transparent 0.5px);
+      background-size: 3px 3px;
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: 0.45;
+      z-index: 0;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .orb.one {
+      top: -60px;
+      left: -70px;
+      background: radial-gradient(circle at 30% 30%, rgba(115, 181, 255, 0.7), rgba(115, 181, 255, 0.1));
+    }
+
+    .orb.two {
+      bottom: -80px;
+      right: -60px;
+      animation-delay: -2.5s;
+      background: radial-gradient(circle at 30% 30%, rgba(115, 210, 191, 0.75), rgba(115, 210, 191, 0.12));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-16px) translateX(8px); }
+    }
+
+    .card {
+      width: min(680px, 92vw);
+      position: relative;
+      z-index: 1;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px) saturate(145%);
+      -webkit-backdrop-filter: blur(18px) saturate(145%);
+      border-radius: 24px;
+      padding: clamp(20px, 4vw, 34px);
+      text-align: center;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      color: var(--muted);
+      font-size: 0.86rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 1;
+      margin: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      margin: 10px 0 6px;
+      font-size: clamp(1.1rem, 3.2vw, 1.6rem);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 0 auto;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    a,
+    button {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(127, 148, 176, 0.33);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.4);
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.2s ease;
+    }
+
+    [data-theme="dark"] a,
+    [data-theme="dark"] button {
+      background: rgba(14, 26, 41, 0.52);
+    }
+
+    .primary {
+      background: linear-gradient(120deg, var(--accent), #55a9ff);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    a:hover,
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(13, 26, 43, 0.14);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(120%);
+      background: rgba(10, 18, 30, 0.82);
+      color: #f5f8ff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      transition: transform 0.28s ease;
+      z-index: 5;
+    }
+
+    #toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
 </head>
-<body class="bg-stone-100 text-stone-800 dark:bg-gray-900 transition-colors duration-300 antialiased overflow-hidden">
+<body class="grain" data-theme="light">
+  <div class="orb one" aria-hidden="true"></div>
+  <div class="orb two" aria-hidden="true"></div>
 
-    <div class="flex flex-col items-center justify-center min-h-screen text-center px-4">
-        
-        <div class="absolute top-0 left-0 w-full h-full opacity-50">
-            <div class="text-5xl absolute rocket-animation" style="top: 20%; left: 10%;">🚀</div>
-        </div>
+  <main class="card" role="main">
+    <div class="mono">ERROR / ROUTE_NOT_FOUND</div>
+    <h1>404</h1>
+    <h2>This page drifted out of orbit.</h2>
+    <p>
+      The link is broken, moved, or never existed. Use the actions below to return to the portfolio safely.
+    </p>
 
-        <h1 class="text-8xl font-bold mono-font text-blue-500">404</h1>
-        <p class="text-2xl font-semibold mt-4">Houston, we have a problem.</p>
-        <p class="text-lg text-gray-600 dark:text-gray-400 mt-2">
-            It seems you've ventured into uncharted territory. This page is lost in space.
-        </p>
-
-        <a href="/" class="mt-8 px-6 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors">
-            Return to Home Base
-        </a>
-
+    <div class="actions">
+      <a class="primary" href="/">Return Home</a>
+      <a href="/index.html">Open Main Page</a>
+      <button id="theme-toggle" type="button">Toggle Theme</button>
     </div>
 
+    <div class="note">Easter egg: press <b>G</b> for glass boost.</div>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const root = document.body;
+      const toggle = document.getElementById('theme-toggle');
+      const toast = document.getElementById('toast');
+      let glassBoost = false;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove('show'), 1900);
+      }
+
+      function setTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+      }
+
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme('dark');
+      } else {
+        setTheme('light');
+      }
+
+      toggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        showToast('Theme: ' + next);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() !== 'g') return;
+        glassBoost = !glassBoost;
+        const card = document.querySelector('.card');
+        card.style.backdropFilter = glassBoost ? 'blur(24px) saturate(175%)' : 'blur(18px) saturate(145%)';
+        card.style.webkitBackdropFilter = glassBoost ? 'blur(24px) saturate(175%)' : 'blur(18px) saturate(145%)';
+        showToast(glassBoost ? 'Glass boost: on' : 'Glass boost: off');
+      });
+    })();
+  </script>
 </body>
 </html>
