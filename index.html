@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Kumar - Portfolio</title>
-    <meta name="description" content="Manoj Kumar - Product Engineering Intern portfolio.">
+    <title>Manoj Kumar — Data Operations Engineer</title>
+    <meta name="description" content="Manoj Kumar — Data Operations Engineer specializing in data pipelines, MongoDB, Elasticsearch, and B2B intelligence infrastructure.">
     <meta name="author" content="Manoj Kumar">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://t-manojkumar.github.io/">
-    <meta property="og:title" content="Manoj Kumar - Portfolio">
+    <meta property="og:title" content="Manoj Kumar — Data Operations Engineer">
     <meta property="og:description" content="One-page portfolio of Manoj Kumar.">
     <meta property="og:image" content="https://t-manojkumar.github.io/assets/profilepic.png">
     <link rel="canonical" href="https://t-manojkumar.github.io/">
@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK — configure SERVICE_ID / TEMPLATE_ID / PUBLIC_KEY below -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
@@ -24,7 +26,6 @@
         body { font-family: 'Inter', sans-serif; }
         .mono-font { font-family: 'Space Mono', monospace; }
 
-        /* Single animation: signature reveal */
         .signature-animate {
             opacity: 0;
             transform: translateY(6px);
@@ -35,26 +36,85 @@
         }
         @keyframes signature-reveal {
             from { opacity: 0; transform: translateY(6px); clip-path: inset(0 100% 0 0); }
-            to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+            to   { opacity: 1; transform: translateY(0);   clip-path: inset(0 0 0 0); }
         }
 
         @media (max-width: 420px) {
             .github-map-wrap { overflow-x: auto; }
         }
+
+        /* Resume modal backdrop */
+        #resume-modal { backdrop-filter: blur(4px); }
+
+        /* Weather pulse while loading */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.4; }
+        }
+        .weather-loading { animation: pulse-soft 1.4s ease-in-out infinite; }
     </style>
 </head>
 
 <body class="bg-stone-100 text-stone-800 dark:bg-gray-900 dark:text-stone-50 transition-colors duration-300 antialiased">
 
-    <div id="top-right-controls" class="fixed top-4 right-4 flex items-center gap-4 z-10">
+    <!-- ── Top-right controls: Weather + Theme toggle ── -->
+    <div id="top-right-controls" class="fixed top-4 right-4 flex items-center gap-3 z-10">
+
+        <!-- Weather widget -->
+        <div id="weather-widget"
+             class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs text-gray-500 dark:text-gray-400
+                    bg-white/70 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700
+                    transition-colors cursor-default select-none"
+             title="Local weather">
+            <span id="weather-icon" class="weather-loading text-sm">⛅</span>
+            <span id="weather-temp" class="weather-loading mono-font">--°C</span>
+            <span id="weather-desc" class="hidden sm:inline weather-loading">…</span>
+        </div>
+
+        <!-- Theme toggle -->
         <button id="theme-toggle" aria-label="Toggle dark mode"
             class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
-            <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg id="theme-icon-sun" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <svg id="theme-icon-moon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
         </button>
     </div>
 
+    <!-- ── Resume email modal ── -->
+    <div id="resume-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4 space-y-4">
+            <h3 class="font-bold text-lg">Get my resume</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+                Enter your email and I'll send it over right away.
+            </p>
+            <input id="resume-email" type="email" placeholder="you@example.com" autocomplete="email"
+                class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 text-sm
+                       bg-white dark:bg-gray-700 text-stone-800 dark:text-stone-100
+                       focus:outline-none focus:ring-2 focus:ring-stone-400 dark:focus:ring-stone-500 transition-colors">
+            <div id="modal-status" class="text-xs text-center text-gray-500 dark:text-gray-400 min-h-[1rem]"></div>
+            <div class="flex gap-2 justify-end pt-1">
+                <button id="modal-cancel"
+                    class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md
+                           hover:border-black dark:hover:border-white transition-colors">
+                    Cancel
+                </button>
+                <button id="modal-send"
+                    class="px-4 py-1.5 text-sm bg-stone-800 dark:bg-stone-100 text-white dark:text-stone-900
+                           rounded-md hover:opacity-90 transition-opacity font-medium">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
     <main class="container mx-auto max-w-3xl px-8 pt-20 pb-16 lg:py-24">
+
+        <!-- ── Header ── -->
         <header class="flex items-center gap-5 mb-16">
             <div class="w-24 h-24 rounded-full flex items-center justify-center flex-shrink-0">
                 <img src="assets/profilepic.png" alt="Manoj Kumar" width="96" height="96"
@@ -62,66 +122,103 @@
             </div>
             <div>
                 <h1 class="text-4xl font-bold">Manoj Kumar</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300">Product Engineering Intern</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">MongoDB · Elasticsearch · GCP</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300">Data Operations Engineer</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">MongoDB · Elasticsearch · GCP · ETL · Python</p>
             </div>
         </header>
 
         <div class="space-y-12">
+
+            <!-- ── About ── -->
             <section id="about" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/about</h2>
-                <div class="text-gray-700 dark:text-gray-200 leading-relaxed">
+                <div class="text-gray-700 dark:text-gray-200 leading-relaxed space-y-3">
                     <p>
-                        IT professional with a Mechatronics + IT background, currently working as a Product Engineering Intern at Adapt.io.
-                        I focus on building reliable data workflows, API integrations, and scalable search pipelines.
+                        Data operations engineer with a background in IT and industrial automation.
+                        Currently at <a href="https://adapt.io" target="_blank" rel="noopener"
+                            class="underline underline-offset-2 hover:text-stone-900 dark:hover:text-white transition-colors">Adapt.io</a>,
+                        building the data infrastructure that powers a B2B intelligence platform serving
+                        <strong>500K+ users</strong> and <strong>250M+ contacts</strong>.
+                    </p>
+                    <p>
+                        I specialise in end-to-end data pipelines — from web crawling and ETL to MongoDB operations,
+                        Elasticsearch search tuning, and API integration. My focus is on data reliability,
+                        enrichment accuracy, and production-scale workflows rather than pure software development.
+                    </p>
+                    <p>
+                        Certified in <strong>Google Data Analytics</strong> and <strong>IT Support</strong>.
+                        Open to roles in data operations, technical ops, or database-focused engineering
+                        where tools, DBs, and process automation drive the work.
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Outside work I enjoy <strong>photography</strong> — mostly street and landscape.
                     </p>
                 </div>
             </section>
 
+            <!-- ── Experience ── -->
             <section id="experience" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/experience</h2>
-                <div class="w-full space-y-6">
+                <div class="w-full space-y-8">
+
                     <div>
-                        <h3 class="font-bold">Product Engineering Intern</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Adapt.io · Nov 2025 - Present</p>
-                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                            <li>Handled MongoDB CRUD operations in production-scale datasets.</li>
-                            <li>Led API migration workflows and schema mapping updates.</li>
-                            <li>Built crawler-based data pipelines with duplicate detection logic.</li>
-                            <li>Improved retrieval quality using Elasticsearch query tuning.</li>
+                        <h3 class="font-bold">Data Operations Engineer <span class="font-normal text-gray-500 dark:text-gray-400">· Intern</span></h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Adapt.io · Nov 2025 – Present</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 mb-2">
+                            B2B intelligence platform — 500K+ users, 250M+ contacts
+                        </p>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-700 dark:text-gray-200">
+                            <li>Built and maintained crawler-based ETL pipelines for company and contact data enrichment at production scale.</li>
+                            <li>Handled MongoDB CRUD operations, schema mapping, and data quality checks across large-scale collections.</li>
+                            <li>Tuned Elasticsearch queries and index mappings to improve search relevance and retrieval performance.</li>
+                            <li>Led API migration workflows, integrating third-party data providers and mapping schemas to internal models.</li>
+                            <li>Implemented duplicate-detection logic to improve enrichment accuracy across the contact database.</li>
+                            <li>Worked across the full data lifecycle: ingestion, transformation, validation, and delivery.</li>
                         </ul>
                     </div>
+
                     <div>
-                        <h3 class="font-bold">Technician - Engineering Services</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Flex · Oct 2020 - Feb 2022</p>
-                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                        <h3 class="font-bold">Technician — Engineering Services</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Flex · Oct 2020 – Feb 2022</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5 mb-2">
+                            Industrial manufacturing — IT &amp; automation support
+                        </p>
+                        <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-700 dark:text-gray-200">
                             <li>Managed lifecycle data for up to 1 million parts in Oracle Agile PLM.</li>
-                            <li>Automated ECO validation flows using VBScript.</li>
-                            <li>Improved BOM quality and process consistency.</li>
+                            <li>Automated ECO validation flows using VBScript, reducing manual review time.</li>
+                            <li>Improved BOM data quality and process consistency across engineering change workflows.</li>
+                            <li>Supported IT infrastructure and industrial automation systems on the factory floor.</li>
                         </ul>
                     </div>
+
                 </div>
             </section>
 
+            <!-- ── Projects / Skills ── -->
             <section id="projects" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/projects</h2>
                 <div class="w-full text-gray-700 dark:text-gray-200 leading-relaxed space-y-3">
                     <p>Selected work and skill areas:</p>
                     <ul class="list-disc list-inside space-y-1 text-sm">
-                        <li>Company data crawler and enrichment pipeline.</li>
-                        <li>Search retrieval optimization with Elasticsearch.</li>
-                        <li>Metadata extraction and automation tools.</li>
+                        <li>Company data crawler and enrichment pipeline at scale.</li>
+                        <li>Elasticsearch index + query optimisation for B2B search.</li>
+                        <li>API integration and schema migration tooling.</li>
+                        <li>Metadata extraction and process-automation scripts.</li>
                     </ul>
                     <div class="flex flex-wrap gap-2 pt-1">
                         <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">MongoDB</span>
                         <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Elasticsearch</span>
                         <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">GCP</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Python</span>
                         <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Data Pipelines</span>
                         <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">API Integration</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">ETL</span>
+                        <span class="px-2.5 py-1 text-xs rounded-full border border-gray-300 dark:border-gray-600">Oracle Agile PLM</span>
                     </div>
                 </div>
             </section>
 
+            <!-- ── GitHub ── -->
             <section id="github" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/github</h2>
                 <div class="w-full">
@@ -136,17 +233,33 @@
                 </div>
             </section>
 
+            <!-- ── Contact ── -->
             <section id="contact" class="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <h2 class="w-full sm:w-24 text-left sm:text-right text-sm mono-font text-gray-500 dark:text-gray-400 flex-shrink-0">/contact</h2>
                 <div class="flex flex-wrap gap-3">
-                    <a href="mailto:t.v.manojkumar19@gmail.com" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">Email</a>
-                    <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">LinkedIn</a>
-                    <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">GitHub</a>
-                    <a href="assets/ManojKumar_RESUME.pdf" target="_blank" rel="noopener" class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">Resume</a>
+                    <a href="mailto:t.v.manojkumar19@gmail.com"
+                       class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        Email
+                    </a>
+                    <a href="https://linkedin.com/in/manojkumar-t" target="_blank" rel="noopener"
+                       class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/t-manojkumar" target="_blank" rel="noopener"
+                       class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors">
+                        GitHub
+                    </a>
+                    <!-- Resume: triggers email modal instead of direct download -->
+                    <button id="resume-btn"
+                       class="px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm hover:border-black dark:hover:border-white transition-colors cursor-pointer">
+                        Resume
+                    </button>
                 </div>
             </section>
+
         </div>
 
+        <!-- ── Footer ── -->
         <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700" id="signature-section">
             <img id="signature" src="assets/sign.png" alt="Manoj Kumar Signature"
                  class="signature-animate mx-auto h-16 mb-4 dark:invert cursor-pointer" loading="lazy">
@@ -161,10 +274,46 @@
     </main>
 
     <script>
+    // ─────────────────────────────────────────────────────────────
+    // EmailJS configuration
+    // 1. Sign up at https://www.emailjs.com (free tier works fine)
+    // 2. Create a service (Gmail / Outlook) → copy Service ID
+    // 3. Create a template with variables: {{to_email}}, {{resume_link}}
+    //    Subject: "Manoj Kumar — Resume"
+    //    Body: "Hi, here's the resume you requested: {{resume_link}}"
+    // 4. Copy Public Key from Account → API Keys
+    // ─────────────────────────────────────────────────────────────
+    const EMAILJS_PUBLIC_KEY   = 'arpfggQB56Fi_vrtB';
+    const EMAILJS_SERVICE_ID   = 'service_barzp3b';
+    const EMAILJS_TEMPLATE_ID  = 'template_a6xm6pb';
+    const RESUME_LINK = 'https://t-manojkumar.github.io/assets/ManojKumar_RESUME.pdf';
+
+    // ── Weather codes → emoji ────────────────────────────────────
+    const WMO_ICONS = {
+        0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
+        45:'🌫️', 48:'🌫️',
+        51:'🌦️', 53:'🌦️', 55:'🌧️',
+        61:'🌧️', 63:'🌧️', 65:'🌧️',
+        71:'❄️', 73:'❄️', 75:'❄️',
+        80:'🌦️', 81:'🌧️', 82:'⛈️',
+        95:'⛈️', 96:'⛈️', 99:'⛈️',
+    };
+    const WMO_DESC = {
+        0:'Clear', 1:'Mostly clear', 2:'Partly cloudy', 3:'Overcast',
+        45:'Foggy', 48:'Foggy',
+        51:'Light drizzle', 53:'Drizzle', 55:'Heavy drizzle',
+        61:'Light rain', 63:'Rain', 65:'Heavy rain',
+        71:'Light snow', 73:'Snow', 75:'Heavy snow',
+        80:'Showers', 81:'Rain showers', 82:'Heavy showers',
+        95:'Thunderstorm', 96:'Thunderstorm', 99:'Thunderstorm',
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
-        const themeBtn = document.getElementById('theme-toggle');
-        const sunIcon  = document.getElementById('theme-icon-sun');
-        const moonIcon = document.getElementById('theme-icon-moon');
+
+        // ── Theme toggle ─────────────────────────────────────────
+        const themeBtn  = document.getElementById('theme-toggle');
+        const sunIcon   = document.getElementById('theme-icon-sun');
+        const moonIcon  = document.getElementById('theme-icon-moon');
 
         const applyTheme = (dark) => {
             document.documentElement.classList.toggle('dark', dark);
@@ -182,9 +331,47 @@
             moonIcon.classList.toggle('hidden', !isDark);
         });
 
-        const signature = document.getElementById('signature');
+        // ── Weather widget ────────────────────────────────────────
+        const weatherIcon = document.getElementById('weather-icon');
+        const weatherTemp = document.getElementById('weather-temp');
+        const weatherDesc = document.getElementById('weather-desc');
+
+        const setWeather = (icon, temp, desc) => {
+            weatherIcon.textContent = icon;
+            weatherTemp.textContent = temp;
+            weatherDesc.textContent = desc;
+            [weatherIcon, weatherTemp, weatherDesc].forEach(el => el.classList.remove('weather-loading'));
+        };
+
+        const fetchWeather = (lat, lon) => {
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=auto`;
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    const temp = Math.round(data.current.temperature_2m);
+                    const code = data.current.weathercode;
+                    setWeather(WMO_ICONS[code] ?? '🌡️', `${temp}°C`, WMO_DESC[code] ?? '');
+                })
+                .catch(() => setWeather('🌡️', '--°C', ''));
+        };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                pos => fetchWeather(pos.coords.latitude, pos.coords.longitude),
+                ()  => {
+                    // Fallback: Chennai coords (home base)
+                    fetchWeather(13.0827, 80.2707);
+                },
+                { timeout: 6000 }
+            );
+        } else {
+            fetchWeather(13.0827, 80.2707);
+        }
+
+        // ── Signature animation ───────────────────────────────────
+        const signature       = document.getElementById('signature');
         const signatureSection = document.getElementById('signature-section');
-        const replayButton = document.getElementById('replay-signature');
+        const replayButton    = document.getElementById('replay-signature');
 
         const replaySignature = () => {
             signature.classList.remove('draw');
@@ -192,16 +379,79 @@
             signature.classList.add('draw');
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) replaySignature();
-            });
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) replaySignature(); });
         }, { threshold: 0.5 });
         observer.observe(signatureSection);
-
         replayButton.addEventListener('click', replaySignature);
 
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ── Resume modal ──────────────────────────────────────────
+        const modal       = document.getElementById('resume-modal');
+        const emailInput  = document.getElementById('resume-email');
+        const sendBtn     = document.getElementById('modal-send');
+        const cancelBtn   = document.getElementById('modal-cancel');
+        const statusEl    = document.getElementById('modal-status');
+        const resumeBtn   = document.getElementById('resume-btn');
+
+        const openModal = () => {
+            emailInput.value = '';
+            statusEl.textContent = '';
+            sendBtn.disabled = false;
+            sendBtn.textContent = 'Send';
+            modal.classList.remove('hidden');
+            setTimeout(() => emailInput.focus(), 60);
+        };
+
+        const closeModal = () => modal.classList.add('hidden');
+
+        resumeBtn.addEventListener('click', openModal);
+        cancelBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        sendBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                statusEl.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending…';
+            statusEl.textContent = '';
+
+            // Check if EmailJS is properly configured
+            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                // Fallback: open PDF directly if EmailJS isn't configured yet
+                statusEl.textContent = 'Opening resume…';
+                setTimeout(() => {
+                    window.open(RESUME_LINK, '_blank');
+                    closeModal();
+                }, 600);
+                return;
+            }
+
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                to_email:    email,
+                resume_link: RESUME_LINK,
+            })
+            .then(() => {
+                statusEl.textContent = '✓ Sent! Check your inbox.';
+                sendBtn.textContent = 'Sent';
+                setTimeout(closeModal, 2000);
+            })
+            .catch(() => {
+                statusEl.textContent = 'Something went wrong. Try again.';
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send';
+            });
+        });
+
+        // Allow Enter key to submit modal
+        emailInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendBtn.click(); });
     });
     </script>
 </body>
